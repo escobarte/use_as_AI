@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apex Consulting — Strategic Excellence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              900: '#0a0f1e',
+              800: '#0d1530',
+              700: '#112044',
+              600: '#1a3260',
+            },
+            gold: {
+              400: '#d4af37',
+              300: '#e8c84a',
+              200: '#f0d96a',
+            }
+          },
+          fontFamily: {
+            serif: ['Georgia', 'Cambria', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .gold-gradient { background: linear-gradient(135deg, #d4af37, #f0d96a); }
+    .gold-text { background: linear-gradient(135deg, #d4af37, #f0d96a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-bg { background: radial-gradient(ellipse at 20% 50%, #1a3260 0%, #0a0f1e 60%); }
+    .card-border { border: 1px solid rgba(212, 175, 55, 0.2); }
+    .stat-card { background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.15); }
+    .nav-blur { backdrop-filter: blur(12px); background: rgba(10, 15, 30, 0.85); }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-navy-900 text-white">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-gold-400/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-8 h-8 gold-gradient rounded flex items-center justify-center text-navy-900 font-bold text-sm">A</span>
+        <span class="font-semibold text-lg tracking-wide">Apex <span class="gold-text">Consulting</span></span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm text-white/70">
+        <a href="#services" class="hover:text-gold-400 transition-colors">Services</a>
+        <a href="#results" class="hover:text-gold-400 transition-colors">Results</a>
+        <a href="#process" class="hover:text-gold-400 transition-colors">Process</a>
+        <a href="#testimonials" class="hover:text-gold-400 transition-colors">Clients</a>
+        <a href="#contact" class="ml-4 px-5 py-2 gold-gradient text-navy-900 font-semibold rounded text-sm hover:opacity-90 transition-opacity">Book a Call</a>
+      </div>
+      <!-- Mobile menu button -->
+      <button class="md:hidden text-white/70 hover:text-gold-400">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gold-400/30 text-gold-400 text-xs font-medium mb-6 uppercase tracking-widest">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+          Trusted by 200+ Companies
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+          Strategic Consulting<br/>
+          That <span class="gold-text">Delivers Results</span>
+        </h1>
+        <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-md">
+          We partner with ambitious organizations to unlock growth, streamline operations, and build sustainable competitive advantages in complex markets.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="px-7 py-3.5 gold-gradient text-navy-900 font-semibold rounded hover:opacity-90 transition-opacity">
+            Schedule a Strategy Call
+          </a>
+          <a href="#results" class="px-7 py-3.5 border border-white/20 text-white rounded hover:border-gold-400/50 hover:text-gold-400 transition-colors">
+            View Case Studies
+          </a>
+        </div>
+      </div>
+      <!-- Stats panel -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="stat-card rounded-xl p-6">
+          <div class="text-4xl font-bold gold-text mb-1">$2.4B+</div>
+          <div class="text-white/50 text-sm">Client Revenue Generated</div>
+        </div>
+        <div class="stat-card rounded-xl p-6">
+          <div class="text-4xl font-bold gold-text mb-1">98%</div>
+          <div class="text-white/50 text-sm">Client Retention Rate</div>
+        </div>
+        <div class="stat-card rounded-xl p-6">
+          <div class="text-4xl font-bold gold-text mb-1">15+</div>
+          <div class="text-white/50 text-sm">Years of Excellence</div>
+        </div>
+        <div class="stat-card rounded-xl p-6">
+          <div class="text-4xl font-bold gold-text mb-1">200+</div>
+          <div class="text-white/50 text-sm">Engagements Delivered</div>
+        </div>
+        <!-- Trust logos row -->
+        <div class="col-span-2 stat-card rounded-xl p-5">
+          <p class="text-white/40 text-xs uppercase tracking-widest mb-4 text-center">Trusted by leaders at</p>
+          <div class="flex items-center justify-around gap-4 opacity-40">
+            <span class="text-white font-bold text-sm tracking-wide">ACME Corp</span>
+            <span class="text-white font-bold text-sm tracking-wide">NovaTech</span>
+            <span class="text-white font-bold text-sm tracking-wide">Vertex</span>
+            <span class="text-white font-bold text-sm tracking-wide">Orion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-24 bg-navy-800">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-gold-400 text-sm uppercase tracking-widest mb-3">What We Do</p>
+        <h2 class="text-4xl font-bold mb-4">End-to-End Advisory Services</h2>
+        <p class="text-white/50 max-w-xl mx-auto">From strategy to execution, we bring the expertise and discipline to move your business forward.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Service 1 -->
+        <div class="card-border rounded-xl p-8 hover:border-gold-400/40 transition-colors group">
+          <div class="w-12 h-12 gold-gradient rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 group-hover:text-gold-400 transition-colors">Strategic Planning</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-4">Market analysis, competitive positioning, and multi-year roadmaps that align your entire organization.</p>
+          <a href="#contact" class="text-gold-400 text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+            Learn more <span>→</span>
+          </a>
+        </div>
+        <!-- Service 2 -->
+        <div class="card-border rounded-xl p-8 hover:border-gold-400/40 transition-colors group">
+          <div class="w-12 h-12 gold-gradient rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 group-hover:text-gold-400 transition-colors">Operational Excellence</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-4">Process optimization, cost reduction, and scalable operating models to maximize efficiency and margins.</p>
+          <a href="#contact" class="text-gold-400 text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+            Learn more <span>→</span>
+          </a>
+        </div>
+        <!-- Service 3 -->
+        <div class="card-border rounded-xl p-8 hover:border-gold-400/40 transition-colors group">
+          <div class="w-12 h-12 gold-gradient rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 group-hover:text-gold-400 transition-colors">Leadership Advisory</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-4">Executive coaching, board advisory, and organizational design to build high-performance leadership teams.</p>
+          <a href="#contact" class="text-gold-400 text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+            Learn more <span>→</span>
+          </a>
+        </div>
+        <!-- Service 4 -->
+        <div class="card-border rounded-xl p-8 hover:border-gold-400/40 transition-colors group">
+          <div class="w-12 h-12 gold-gradient rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 group-hover:text-gold-400 transition-colors">Market Expansion</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-4">New market entry, M&A due diligence, and partnership strategy to accelerate growth beyond your core.</p>
+          <a href="#contact" class="text-gold-400 text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+            Learn more <span>→</span>
+          </a>
+        </div>
+        <!-- Service 5 -->
+        <div class="card-border rounded-xl p-8 hover:border-gold-400/40 transition-colors group">
+          <div class="w-12 h-12 gold-gradient rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 group-hover:text-gold-400 transition-colors">Risk & Compliance</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-4">Enterprise risk frameworks, regulatory compliance, and governance structures that protect and enable growth.</p>
+          <a href="#contact" class="text-gold-400 text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+            Learn more <span>→</span>
+          </a>
+        </div>
+        <!-- Service 6 -->
+        <div class="card-border rounded-xl p-8 hover:border-gold-400/40 transition-colors group">
+          <div class="w-12 h-12 gold-gradient rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 group-hover:text-gold-400 transition-colors">Digital Transformation</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-4">Technology strategy, digital operating models, and change management to modernize your enterprise.</p>
+          <a href="#contact" class="text-gold-400 text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+            Learn more <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results / Case Studies -->
+  <section id="results" class="py-24 bg-navy-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-gold-400 text-sm uppercase tracking-widest mb-3">Proven Results</p>
+        <h2 class="text-4xl font-bold mb-4">Impact That Speaks for Itself</h2>
+        <p class="text-white/50 max-w-xl mx-auto">Real outcomes from real engagements. We measure success by our clients' success.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-navy-800 rounded-xl overflow-hidden card-border">
+          <div class="h-2 gold-gradient"></div>
+          <div class="p-8">
+            <span class="text-xs text-gold-400 uppercase tracking-wider">Manufacturing</span>
+            <h3 class="text-xl font-semibold mt-3 mb-2">34% Cost Reduction in 8 Months</h3>
+            <p class="text-white/50 text-sm leading-relaxed mb-6">Redesigned supply chain operations for a $400M manufacturer, eliminating waste and renegotiating key vendor contracts.</p>
+            <div class="flex gap-6">
+              <div><div class="text-2xl font-bold gold-text">$136M</div><div class="text-white/40 text-xs">Annual Savings</div></div>
+              <div><div class="text-2xl font-bold gold-text">8mo</div><div class="text-white/40 text-xs">Time to Value</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-navy-800 rounded-xl overflow-hidden card-border">
+          <div class="h-2 gold-gradient"></div>
+          <div class="p-8">
+            <span class="text-xs text-gold-400 uppercase tracking-wider">Financial Services</span>
+            <h3 class="text-xl font-semibold mt-3 mb-2">3× Revenue Growth Over 3 Years</h3>
+            <p class="text-white/50 text-sm leading-relaxed mb-6">Developed and executed a market expansion strategy for a regional bank entering two new metropolitan markets.</p>
+            <div class="flex gap-6">
+              <div><div class="text-2xl font-bold gold-text">3×</div><div class="text-white/40 text-xs">Revenue Growth</div></div>
+              <div><div class="text-2xl font-bold gold-text">2</div><div class="text-white/40 text-xs">New Markets</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-navy-800 rounded-xl overflow-hidden card-border">
+          <div class="h-2 gold-gradient"></div>
+          <div class="p-8">
+            <span class="text-xs text-gold-400 uppercase tracking-wider">Technology</span>
+            <h3 class="text-xl font-semibold mt-3 mb-2">Successful $280M Series C</h3>
+            <p class="text-white/50 text-sm leading-relaxed mb-6">Prepared a SaaS company for institutional investment — restructuring governance, metrics, and investor narrative.</p>
+            <div class="flex gap-6">
+              <div><div class="text-2xl font-bold gold-text">$280M</div><div class="text-white/40 text-xs">Capital Raised</div></div>
+              <div><div class="text-2xl font-bold gold-text">6mo</div><div class="text-white/40 text-xs">Engagement</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="py-24 bg-navy-800">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-gold-400 text-sm uppercase tracking-widest mb-3">How We Work</p>
+        <h2 class="text-4xl font-bold mb-4">A Disciplined Engagement Model</h2>
+        <p class="text-white/50 max-w-xl mx-auto">No guesswork. Our proven four-phase process ensures clarity, alignment, and measurable outcomes from day one.</p>
+      </div>
+      <div class="relative">
+        <!-- Connector line -->
+        <div class="hidden md:block absolute top-10 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/30 to-transparent"></div>
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="relative text-center">
+            <div class="w-20 h-20 mx-auto gold-gradient rounded-full flex items-center justify-center text-navy-900 font-bold text-xl mb-6 relative z-10">01</div>
+            <h3 class="font-semibold text-lg mb-2">Discovery</h3>
+            <p class="text-white/50 text-sm">Deep-dive into your business, challenges, and objectives to build a clear picture of the opportunity.</p>
+          </div>
+          <div class="relative text-center">
+            <div class="w-20 h-20 mx-auto gold-gradient rounded-full flex items-center justify-center text-navy-900 font-bold text-xl mb-6 relative z-10">02</div>
+            <h3 class="font-semibold text-lg mb-2">Diagnosis</h3>
+            <p class="text-white/50 text-sm">Rigorous analysis to identify root causes, hidden constraints, and high-leverage intervention points.</p>
+          </div>
+          <div class="relative text-center">
+            <div class="w-20 h-20 mx-auto gold-gradient rounded-full flex items-center justify-center text-navy-900 font-bold text-xl mb-6 relative z-10">03</div>
+            <h3 class="font-semibold text-lg mb-2">Design</h3>
+            <p class="text-white/50 text-sm">Co-create a tailored strategy and execution roadmap with clear milestones and accountability.</p>
+          </div>
+          <div class="relative text-center">
+            <div class="w-20 h-20 mx-auto gold-gradient rounded-full flex items-center justify-center text-navy-900 font-bold text-xl mb-6 relative z-10">04</div>
+            <h3 class="font-semibold text-lg mb-2">Deliver</h3>
+            <p class="text-white/50 text-sm">Hands-on implementation support with continuous measurement to ensure results are realized.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-24 bg-navy-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-gold-400 text-sm uppercase tracking-widest mb-3">Client Voices</p>
+        <h2 class="text-4xl font-bold mb-4">What Our Clients Say</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card-border rounded-xl p-8">
+          <div class="flex gap-1 mb-4">
+            <span class="text-gold-400">★★★★★</span>
+          </div>
+          <p class="text-white/70 text-sm leading-relaxed mb-6">"Apex brought clarity where we had confusion. Their strategic framework helped our leadership team align on priorities that had been debated for years — and then actually execute them."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-navy-900 font-bold text-sm">JR</div>
+            <div>
+              <div class="font-semibold text-sm">James Rutherford</div>
+              <div class="text-white/40 text-xs">CEO, Meridian Manufacturing</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-border rounded-xl p-8">
+          <div class="flex gap-1 mb-4">
+            <span class="text-gold-400">★★★★★</span>
+          </div>
+          <p class="text-white/70 text-sm leading-relaxed mb-6">"We engaged Apex ahead of our Series C and they transformed how we tell our story to investors. The rigor they brought to our financial model and governance was invaluable."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-navy-900 font-bold text-sm">SK</div>
+            <div>
+              <div class="font-semibold text-sm">Sarah Kimani</div>
+              <div class="text-white/40 text-xs">CFO, CloudVault Technologies</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-border rounded-xl p-8">
+          <div class="flex gap-1 mb-4">
+            <span class="text-gold-400">★★★★★</span>
+          </div>
+          <p class="text-white/70 text-sm leading-relaxed mb-6">"Three years in, and Apex still feels like a true partner — not a vendor. Their team is embedded in our strategic thinking at every major decision point. Worth every dollar."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-navy-900 font-bold text-sm">MP</div>
+            <div>
+              <div class="font-semibold text-sm">Marcus Pellegrini</div>
+              <div class="text-white/40 text-xs">President, Orion Financial Group</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Contact -->
+  <section id="contact" class="py-24 bg-navy-800">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <p class="text-gold-400 text-sm uppercase tracking-widest mb-3">Start the Conversation</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Transform<br/>Your Business?</h2>
+      <p class="text-white/50 mb-12 text-lg max-w-xl mx-auto">Book a complimentary 30-minute strategy call. No pitch — just a candid conversation about your biggest challenges.</p>
+      <form class="bg-navy-900 card-border rounded-2xl p-8 md:p-10 text-left space-y-5" onsubmit="handleSubmit(event)">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-sm text-white/60 mb-2">Full Name</label>
+            <input type="text" placeholder="John Smith" class="w-full bg-navy-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-gold-400/50 transition-colors" />
+          </div>
+          <div>
+            <label class="block text-sm text-white/60 mb-2">Company</label>
+            <input type="text" placeholder="Acme Corporation" class="w-full bg-navy-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-gold-400/50 transition-colors" />
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-sm text-white/60 mb-2">Work Email</label>
+            <input type="email" placeholder="john@acme.com" class="w-full bg-navy-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-gold-400/50 transition-colors" />
+          </div>
+          <div>
+            <label class="block text-sm text-white/60 mb-2">Company Revenue</label>
+            <select class="w-full bg-navy-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white/70 focus:outline-none focus:border-gold-400/50 transition-colors">
+              <option value="">Select range</option>
+              <option>$1M – $10M</option>
+              <option>$10M – $50M</option>
+              <option>$50M – $250M</option>
+              <option>$250M+</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm text-white/60 mb-2">What's your biggest challenge right now?</label>
+          <textarea rows="3" placeholder="Tell us what's keeping you up at night..." class="w-full bg-navy-800 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-gold-400/50 transition-colors resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full py-4 gold-gradient text-navy-900 font-semibold rounded-lg hover:opacity-90 transition-opacity text-sm">
+          Request My Strategy Call →
+        </button>
+        <p class="text-center text-white/30 text-xs">We respond within 1 business day. No spam, ever.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-900 border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 gold-gradient rounded flex items-center justify-center text-navy-900 font-bold text-sm">A</span>
+          <span class="font-semibold text-lg">Apex <span class="gold-text">Consulting</span></span>
+        </div>
+        <div class="flex gap-8 text-sm text-white/40">
+          <a href="#services" class="hover:text-gold-400 transition-colors">Services</a>
+          <a href="#results" class="hover:text-gold-400 transition-colors">Results</a>
+          <a href="#process" class="hover:text-gold-400 transition-colors">Process</a>
+          <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
+        </div>
+        <p class="text-white/30 text-sm">© 2026 Apex Consulting. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      btn.textContent = 'Request Sent! We\'ll be in touch shortly.';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+Look at the attached screenshot. It shows a landing page design for "Alina Kovalchuk" with a dark/beige color scheme, pink accent color (#e8437a or similar hot pink), serif/elegant typography, and a professional LinkedIn authority coaching brand.
+
+Based on this design system, create a new CTA section with a contact form and add it at the BOTTOM of the existing page (before the footer or as the last section).
+
+## Design requirements (match the screenshot style):
+- **Colors**: Dark navy/charcoal background (#1a1a2e or similar), beige/cream (#f5f0e8), hot pink accent (#e8437a), white text
+- **Typography**: Elegant serif font for headings (like the site uses), clean sans-serif for body
+- **Style**: Luxury, professional, feminine — match the existing page aesthetic exactly
+
+## CTA Section content:
+- Headline: "Book a Strategic Audit" (already visible at bottom of screenshot — expand this into a full section)
+- Subheadline: Something like "Let's build your LinkedIn authority together"
+- Contact form with fields:
+  - Full Name
+  - Email
+  - Company / Role
+  - "What's your biggest LinkedIn challenge?" (textarea)
+  - Submit button styled in hot pink with hover effect
+- Add a short trust line below the button (e.g., "No spam. Just strategy.")
+
+## Technical:
+- HTML + CSS (single file)
+- Fully responsive (mobile-first)
+- Smooth animations on form field focus
+- Button hover: slight scale + glow effect in pink
+- Add this section at the bottom of the page, above the footer

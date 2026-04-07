@@ -1,0 +1,30 @@
+image: docker:27.5.1
+
+services:
+  - docker:dind
+
+variables:
+  SERVER_IP: 10.100.194.21
+  SERVER_USER: root
+
+before_script:
+  - apk add --no-cache openssh-client docker-compose
+
+stages:
+  - deploy
+
+up-dev:
+  stage: deploy
+  script:
+    - eval $(ssh-agent -s)
+    - echo "$SSH_SD2_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
+    - ssh $SERVER_USER@$SERVER_IP "echo USER=$HARBOR_USER"
+    - scp docker-compose.yaml $SERVER_USER@$SERVER_IP:/opt/service-desk-v2/dev/docker-compose-dev.yaml
+    - ssh $SERVER_USER@$SERVER_IP "docker login -u \"$HARBOR_USER\" -p \"$HARBOR_PASSWORD\" harbor-dev.itsec.md"
+    - ssh $SERVER_USER@$SERVER_IP "docker compose -f /opt/service-desk-v2/dev/docker-compose-dev.yaml pull"
+    - ssh $SERVER_USER@$SERVER_IP "echo 'DB_CONNECTION_STRING value is:' '$DB_CONNECTION_STRING'"
+    - ssh $SERVER_USER@$SERVER_IP "DB_CONNECTION_STRING='$DB_CONNECTION_STRING' docker compose -f /opt/service-desk-v2/dev/docker-compose-dev.yaml up -d"
+  only:
+    - up-dev

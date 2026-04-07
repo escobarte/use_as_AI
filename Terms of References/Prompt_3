@@ -1,0 +1,34 @@
+Read SKILL-landing-brief.md in the current folder.
+Read ./web-artifacts-builder/SKILL.md
+
+Then do the following steps in order:
+
+STEP 1 — Initialize the React project:
+Run: bash ./web-artifacts-builder/scripts/init-artifact.sh transnatur-landing
+
+STEP 2 — Install react-router-dom:
+cd transnatur-landing && npm install react-router-dom
+
+STEP 3 — Configure Tailwind with custom colors and fonts.
+In tailwind.config.ts add:
+- colors: navy #0B1F3A, red #C62828, gray #4A444A, light #F5F5F5
+- fontFamily: heading = Poppins, label = Bebas Neue
+
+STEP 4 — Add Google Fonts to index.html:
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+STEP 5 — Create these files in src/pages/:
+- Home.tsx — full landing page with all sections from the brief
+- Form.tsx — lead form page with all fields from the brief
+- ThankYou.tsx — thank you page
+
+STEP 6 — Set up routing in App.tsx using react-router-dom.
+Routes: / → Home, /form → Form, /thankyou → ThankYou
+
+STEP 7 — Copy images to the project:
+Copy ../assets/ folder into transnatur-landing/src/assets/
+
+STEP 8 — Bundle everything into one HTML file:
+Run: bash ../web-artifacts-builder/scripts/bundle-artifact.sh
+
+STEP 9 — Show me the bundle.html file.

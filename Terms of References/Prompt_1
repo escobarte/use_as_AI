@@ -1,0 +1,124 @@
+You are building a complete company website for a freight & trucking business called "Nexora Freight".
+
+Use the following tech stack:
+- Next.js 14 (App Router)
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- React Hook Form
+- Fonts: Barlow Condensed (700) for headings + DM Sans (400/500) for body via next/font/google
+
+---
+
+## DESIGN SYSTEM — follow exactly, no deviations
+
+Colors (add to globals.css as CSS variables):
+  --color-bg: #111111
+  --color-surface: #1F1F1F
+  --color-accent: #C79A1B
+  --color-accent-hover: #A87E14
+  --color-text-primary: #F2F2F2
+  --color-text-secondary: #A8A8A8
+  --color-border: #2A2A2A
+  --color-border-accent: #C79A1B
+
+Tailwind config — extend colors with: bg, surface, accent, accent-hover, text-primary, text-secondary, border (matching the values above).
+
+Buttons — two variants only:
+  Primary: background #C79A1B, text #111111 (black), hover → #A87E14
+  Ghost: transparent bg, border 1.5px solid #C79A1B, text #F2F2F2, hover → fill #C79A1B + text #111111
+
+Cards: background #1F1F1F, border 1px solid #2A2A2A, hover → border 1px solid #C79A1B, border-radius 8px
+
+Visual rules:
+  - Card hover: translateY(-4px) + mustard border
+  - Section labels: short 3px mustard line above the title
+  - No gradients except a subtle radial on hero background
+  - Icon color: #C79A1B for primary, #A8A8A8 for secondary
+
+---
+
+## PAGES TO BUILD
+
+### / (Home)
+Sections in order:
+1. Navbar — sticky, transparent → blur after 60px scroll, logo left, nav center (Home / About / Services / Blog / Contact), right: Ghost button "Log in" + Primary button "Get a quote"
+2. Hero — 100vh, large Barlow Condensed headline, subheadline, 2 CTA buttons, subtle radial bg, scroll indicator, staggered fade-up on load
+3. Social proof bar — 4 stats (500+ shipments / 12 years / 4.9★ / Licensed & insured), vertical dividers
+4. Feature cards — 6 cards grid, each: Lucide icon + title + description. Use freight-relevant services: Full Truckload, Partial Load, Express Delivery, Route Planning, Real-time Tracking, 24/7 Dispatch
+5. Trust section — full-width darker block, bold left headline, 4 bullet points right (Licensed & certified / GPS tracking on all routes / No hidden fees / On-time delivery guarantee)
+6. Testimonials — 3 cards, initials avatar + name + company + quote
+7. FAQ accordion — 6 questions about freight services, AnimatePresence expand/collapse
+8. CTA banner — full-width mustard background, dark headline, single button
+9. Footer — 4 columns: logo+tagline / Navigation / Services / Legal, bottom bar with copyright
+
+### /about
+- Page hero (~400px)
+- Company story (2 paragraphs, left text + right image placeholder)
+- Mission & values (3 cards)
+- Team (4 members with initials avatars)
+- Stats row: 12 years / 500+ clients / 1M+ km delivered / 99% on-time
+
+### /services
+- Page hero
+- Services grid (6 cards, larger, with Learn more link)
+- How it works (4 numbered steps, dashed connector line)
+- CTA banner
+
+### /contact
+- 2-column layout
+- Left: "Let's talk" headline + address + phone + email + working hours + social icons
+- Right: form (Full name / Email / Phone / Cargo type dropdown / Message) + validation + success state
+
+### /blog
+- Featured post card (large)
+- Grid of 5 post cards
+- Category filter: All / News / Guides / Industry
+
+### /privacy and /terms
+- Clean article layout
+- Table of contents with anchor links
+- Standard placeholder legal text
+
+---
+
+## ANIMATIONS
+
+- All sections: fadeInUp on whileInView (Framer Motion)
+- Cards: whileHover → y: -4
+- Page transitions: fade
+- Respect prefers-reduced-motion
+
+---
+
+## CONTENT
+
+Fill all content yourself with realistic freight & trucking placeholder text.
+Company name: Nexora Freight
+Tagline: "Moving cargo. Building trust."
+Do NOT use Lorem Ipsum — write real-sounding sentences.
+All images: colored placeholder divs or https://placehold.co/ URLs.
+Team names: Alex Morgan, Jamie Chen, Sam Rivera, Chris Park.
+
+---
+
+## SEO
+
+Every page must have metadata with title and description.
+Add Open Graph tags.
+Use next/font for zero layout shift.
+
+---
+
+## START INSTRUCTIONS
+
+1. Initialize the Next.js 14 project with App Router + Tailwind CSS
+2. Install all dependencies
+3. Set up globals.css with CSS variables and Tailwind config
+4. Build layout.tsx with Navbar and Footer
+5. Build shared UI components: Button, Card, Badge
+6. Build pages in order: Home → About → Services → Contact → Blog → Legal
+7. Add all Framer Motion animations after content is complete
+8. Verify responsive layout at sm/md/lg/xl breakpoints
+
+Start now. Build the full project completely.

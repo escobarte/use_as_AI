@@ -1,0 +1,240 @@
+
+<style>
+  :root {
+    --bg: #111111;
+    --surface: #1F1F1F;
+    --accent: #C79A1B;
+    --accent-hover: #A87E14;
+    --tp: #F2F2F2;
+    --ts: #A8A8A8;
+    --border: #2A2A2A;
+  }
+  .rm-wrap { background: var(--bg); border-radius: 12px; padding: 28px 24px; font-family: var(--font-sans); }
+  .rm-phase { margin-bottom: 28px; }
+  .rm-phase-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .rm-phase-num { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #111; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .rm-phase-title { font-size: 14px; font-weight: 500; color: var(--tp); }
+  .rm-phase-sub { font-size: 12px; color: var(--ts); margin-left: auto; }
+  .rm-cards { display: grid; gap: 8px; }
+  .rm-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; cursor: pointer; transition: border-color 0.15s; }
+  .rm-card:hover { border-color: var(--accent); }
+  .rm-card-top { display: flex; align-items: center; gap: 8px; }
+  .rm-card-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .rm-card-name { font-size: 13px; font-weight: 500; color: var(--tp); }
+  .rm-card-detail { font-size: 12px; color: var(--ts); margin-top: 6px; padding-left: 15px; line-height: 1.6; }
+  .rm-card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; padding-left: 15px; }
+  .rm-tag { font-size: 11px; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 2px 7px; }
+  .rm-tag-gray { font-size: 11px; color: var(--ts); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; }
+  .rm-divider { width: 2px; height: 16px; background: var(--border); margin-left: 12px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  @media (max-width: 560px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  }
+  .rm-legend { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .rm-legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ts); }
+  .rm-legend-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .rm-section-label { font-size: 11px; font-weight: 500; color: var(--ts); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; margin-left: 2px; }
+</style>
+
+<div class="rm-wrap">
+  <div class="rm-legend">
+    <div class="rm-legend-item"><div class="rm-legend-dot"></div> Core task</div>
+    <div class="rm-legend-item" style="color: var(--accent)">— Mustard = accent color #C79A1B</div>
+    <div class="rm-legend-item">Background #111111 · Surface #1F1F1F</div>
+  </div>
+
+  <!-- Phase 1 -->
+  <div class="rm-phase">
+    <div class="rm-phase-header">
+      <div class="rm-phase-num">1</div>
+      <div class="rm-phase-title">Project setup</div>
+      <div class="rm-phase-sub">Do this first</div>
+    </div>
+    <div class="rm-cards grid-3">
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Initialize Next.js 14</div></div>
+        <div class="rm-card-detail">App Router + Tailwind CSS. Run: <code style="color:var(--accent);font-size:11px">npx create-next-app@latest</code></div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Install dependencies</div></div>
+        <div class="rm-card-detail">framer-motion · lucide-react · react-hook-form</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Design system</div></div>
+        <div class="rm-card-detail">globals.css with CSS variables · tailwind.config.ts · Barlow Condensed + DM Sans fonts</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rm-divider"></div>
+
+  <!-- Phase 2 -->
+  <div class="rm-phase" style="margin-top:20px">
+    <div class="rm-phase-header">
+      <div class="rm-phase-num">2</div>
+      <div class="rm-phase-title">Shared components</div>
+      <div class="rm-phase-sub">Build before any page</div>
+    </div>
+    <div class="rm-cards grid-4">
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Navbar</div></div>
+        <div class="rm-card-detail">Sticky · transparent → blur on scroll · hamburger on mobile</div>
+        <div class="rm-card-tags"><span class="rm-tag">layout</span></div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Footer</div></div>
+        <div class="rm-card-detail">4 columns · dark bg · social icons · copyright</div>
+        <div class="rm-card-tags"><span class="rm-tag">layout</span></div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Button</div></div>
+        <div class="rm-card-detail">Primary: mustard bg + black text · Ghost: mustard border</div>
+        <div class="rm-card-tags"><span class="rm-tag">ui</span></div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Card</div></div>
+        <div class="rm-card-detail">Surface #1F1F1F · border #2A2A2A · hover: mustard border</div>
+        <div class="rm-card-tags"><span class="rm-tag">ui</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rm-divider"></div>
+
+  <!-- Phase 3 -->
+  <div class="rm-phase" style="margin-top:20px">
+    <div class="rm-phase-header">
+      <div class="rm-phase-num">3</div>
+      <div class="rm-phase-title">Home page — section by section</div>
+      <div class="rm-phase-sub">Build top → bottom</div>
+    </div>
+    <div class="rm-section-label">Page sections in order</div>
+    <div class="rm-cards grid-2">
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Hero section</div></div>
+        <div class="rm-card-detail">100vh · Barlow Condensed 60–80px headline · staggered fade-up animation · 2 CTA buttons · scroll indicator</div>
+        <div class="rm-card-tags"><span class="rm-tag">Framer Motion</span><span class="rm-tag-gray">priority</span></div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Social proof bar</div></div>
+        <div class="rm-card-detail">4 stats: 500+ clients · 12 years · 4.9★ · Licensed. Thin strip, vertical dividers</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Feature cards</div></div>
+        <div class="rm-card-detail">4–6 cards in a grid · icon + title + description · hover: lift + mustard border glow</div>
+        <div class="rm-card-tags"><span class="rm-tag">Lucide icons</span></div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Trust section</div></div>
+        <div class="rm-card-detail">Full-width dark block · bold left statement · 4 checkpoints right · "Built on trust. Proven by results."</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Testimonials</div></div>
+        <div class="rm-card-detail">3 cards in a row · initials avatar + name + role + quote · horizontal scroll on mobile</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">FAQ accordion</div></div>
+        <div class="rm-card-detail">5–6 Q&amp;As · collapsed by default · AnimatePresence expand/collapse</div>
+        <div class="rm-card-tags"><span class="rm-tag">Framer Motion</span></div>
+      </div>
+      <div class="rm-card" style="grid-column: span 2">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">CTA banner</div></div>
+        <div class="rm-card-detail">Full-width · mustard accent bg · "Ready to get started?" · single "Contact us today" button · last conversion moment before footer</div>
+        <div class="rm-card-tags"><span class="rm-tag-gray">conversion</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rm-divider"></div>
+
+  <!-- Phase 4 -->
+  <div class="rm-phase" style="margin-top:20px">
+    <div class="rm-phase-header">
+      <div class="rm-phase-num">4</div>
+      <div class="rm-phase-title">Remaining pages</div>
+      <div class="rm-phase-sub">Build in this order</div>
+    </div>
+    <div class="rm-cards grid-2">
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">About /about</div></div>
+        <div class="rm-card-detail">Page hero · company story · mission &amp; values cards · team grid · stats row</div>
+        <div class="rm-card-tags"><span class="rm-tag-gray">trust-building</span></div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Services /services</div></div>
+        <div class="rm-card-detail">Services grid · optional pricing tiers · how-it-works steps (dashed connector) · CTA banner</div>
+        <div class="rm-card-tags"><span class="rm-tag-gray">conversion</span></div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Contact /contact</div></div>
+        <div class="rm-card-detail">2-col layout · left: address + hours + socials · right: form (name, email, phone, subject, message) + validation + success state</div>
+        <div class="rm-card-tags"><span class="rm-tag">react-hook-form</span></div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Blog /blog</div></div>
+        <div class="rm-card-detail">Featured post card · grid of 4–6 posts · category filter buttons · placeholder content</div>
+        <div class="rm-card-tags"><span class="rm-tag-gray">placeholder only</span></div>
+      </div>
+      <div class="rm-card" style="grid-column: span 2">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Legal pages /privacy · /terms</div></div>
+        <div class="rm-card-detail">Clean article layout · table of contents anchors · standard placeholder legal text · "Last updated: January 2025"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rm-divider"></div>
+
+  <!-- Phase 5 -->
+  <div class="rm-phase" style="margin-top:20px">
+    <div class="rm-phase-header">
+      <div class="rm-phase-num">5</div>
+      <div class="rm-phase-title">Animations + polish</div>
+      <div class="rm-phase-sub">Add last</div>
+    </div>
+    <div class="rm-cards grid-3">
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Scroll animations</div></div>
+        <div class="rm-card-detail">All sections: fadeInUp on whileInView · staggered children</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Page transitions</div></div>
+        <div class="rm-card-detail">Fade between routes via Framer Motion layout · respect prefers-reduced-motion</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Hover states</div></div>
+        <div class="rm-card-detail">Cards: y:-4px · buttons: darken · nav links: mustard underline</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rm-divider"></div>
+
+  <!-- Phase 6 -->
+  <div class="rm-phase" style="margin-top:20px; margin-bottom:0">
+    <div class="rm-phase-header">
+      <div class="rm-phase-num">6</div>
+      <div class="rm-phase-title">SEO + performance check</div>
+      <div class="rm-phase-sub">Before finishing</div>
+    </div>
+    <div class="rm-cards grid-4">
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Metadata</div></div>
+        <div class="rm-card-detail">title + description + og: tags on every page</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Images</div></div>
+        <div class="rm-card-detail">next/image everywhere · width + height + alt required</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Responsive test</div></div>
+        <div class="rm-card-detail">Check all breakpoints: sm 640 · md 768 · lg 1024 · xl 1280</div>
+      </div>
+      <div class="rm-card">
+        <div class="rm-card-top"><div class="rm-card-dot"></div><div class="rm-card-name">Lighthouse</div></div>
+        <div class="rm-card-detail">Performance &gt;90 · Accessibility &gt;95</div>
+      </div>
+    </div>
+  </div>
+</div>
