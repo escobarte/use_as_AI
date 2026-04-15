@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Alina Kovalchuk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --dark:      #12111a;
+      --dark-card: #1c1b28;
+      --beige:     #f0ebe0;
+      --beige-dim: rgba(240, 235, 224, 0.55);
+      --pink:      #e8437a;
+      --pink-glow: rgba(232, 67, 122, 0.30);
+      --pink-dark: #c93268;
+      --border:    rgba(240, 235, 224, 0.10);
+      --divider:   rgba(240, 235, 224, 0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--beige);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NAV STUB ── */
+    .site-nav {
+      background: #1a1927;
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--beige);
+      letter-spacing: 0.04em;
+    }
+    .logo span { color: var(--pink); }
+    .site-nav nav a {
+      color: var(--beige-dim);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-left: 32px;
+      transition: color 0.2s;
+    }
+    .site-nav nav a:hover { color: var(--beige); }
+
+    /* ══════════════════════════════
+       FAQ SECTION
+    ══════════════════════════════ */
+    .faq-section {
+      position: relative;
+      padding: 100px 24px 120px;
+      overflow: hidden;
+    }
+
+    /* Background glow */
+    .faq-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(232, 67, 122, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .faq-inner {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    /* ── Section header ── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 20px;
+    }
+    .eyebrow::before,
+    .eyebrow::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--pink);
+      opacity: 0.55;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--beige);
+      margin-bottom: 16px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--pink);
+    }
+
+    .section-sub {
+      font-size: 0.93rem;
+      color: var(--beige-dim);
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    /* ── FAQ List ── */
+    .faq-list {
+      list-style: none;
+    }
+
+    /* ── FAQ Item ── */
+    .faq-item {
+      border-top: 1px solid var(--divider);
+    }
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .faq-trigger {
+      all: unset;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      width: 100%;
+      padding: 24px 0;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .faq-question {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--beige);
+      line-height: 1.5;
+      transition: color 0.2s;
+    }
+
+    /* Hover state */
+    .faq-trigger:hover .faq-question {
+      color: #ffffff;
+    }
+
+    /* Open state — question gets pink tint */
+    .faq-item.is-open .faq-question {
+      color: #ffffff;
+    }
+
+    /* ── Icon (+/−) ── */
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--divider);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition:
+        border-color 0.25s,
+        background 0.25s,
+        transform 0.3s ease;
+    }
+
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--beige);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s;
+    }
+    /* Horizontal bar */
+    .faq-icon::before {
+      width: 10px;
+      height: 1.5px;
+    }
+    /* Vertical bar (the + part) */
+    .faq-icon::after {
+      width: 1.5px;
+      height: 10px;
+    }
+
+    .faq-trigger:hover .faq-icon {
+      border-color: rgba(232, 67, 122, 0.4);
+    }
+
+    /* Open → rotate to − */
+    .faq-item.is-open .faq-icon {
+      background: rgba(232, 67, 122, 0.12);
+      border-color: rgba(232, 67, 122, 0.5);
+      transform: rotate(45deg);
+    }
+    .faq-item.is-open .faq-icon::before,
+    .faq-item.is-open .faq-icon::after {
+      background: var(--pink);
+    }
+
+    /* ── Answer panel ── */
+    .faq-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+
+    .faq-item.is-open .faq-body {
+      grid-template-rows: 1fr;
+    }
+
+    .faq-body-inner {
+      overflow: hidden;
+    }
+
+    .faq-answer {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: rgba(240, 235, 224, 0.68);
+      padding: 0 44px 28px 0;
+    }
+
+    /* ── CTA block below FAQ ── */
+    .faq-cta {
+      margin-top: 72px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .faq-cta p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--beige-dim);
+    }
+
+    .btn-pink {
+      display: inline-block;
+      background: var(--pink);
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 15px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    }
+    .btn-pink::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.18), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.5s ease;
+    }
+    .btn-pink:hover {
+      background: var(--pink-dark);
+      transform: scale(1.035) translateY(-1px);
+      box-shadow: 0 8px 28px var(--pink-glow);
+    }
+    .btn-pink:hover::before { left: 140%; }
+    .btn-pink:active { transform: scale(0.98); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0e0d17;
+      border-top: 1px solid var(--border);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer p {
+      font-size: 0.72rem;
+      color: var(--beige-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Entrance animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .section-header {
+      animation: fadeUp 0.6s ease both;
+    }
+    .faq-item {
+      animation: fadeUp 0.5s ease both;
+    }
+    .faq-item:nth-child(1) { animation-delay: 0.10s; }
+    .faq-item:nth-child(2) { animation-delay: 0.17s; }
+    .faq-item:nth-child(3) { animation-delay: 0.24s; }
+    .faq-item:nth-child(4) { animation-delay: 0.31s; }
+    .faq-item:nth-child(5) { animation-delay: 0.38s; }
+    .faq-item:nth-child(6) { animation-delay: 0.45s; }
+    .faq-cta { animation: fadeUp 0.5s 0.52s ease both; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .site-nav { padding: 16px 20px; }
+      .site-nav nav { display: none; }
+      .faq-section { padding: 64px 20px 80px; }
+      footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+      .faq-answer { padding-right: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav stub -->
+  <header class="site-nav">
+    <div class="logo">Alina <span>Kovalchuk</span></div>
+    <nav>
+      <a href="#">Work With Us</a>
+      <a href="#">Your Results</a>
+      <a href="#">On Press</a>
+      <a href="#">Book Audit</a>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════
+       FAQ SECTION
+  ══════════════════════════════ -->
+  <section class="faq-section" aria-labelledby="faq-title">
+    <div class="faq-inner">
+
+      <div class="section-header">
+        <div class="eyebrow">Got Questions</div>
+        <h2 class="section-title" id="faq-title">
+          Questions We <em>Hear Often</em>
+        </h2>
+        <p class="section-sub">
+          Everything you need to know before we start building your LinkedIn™ authority.
+        </p>
+      </div>
+
+      <ul class="faq-list" role="list">
+
+        <li class="faq-item is-open">
+          <button class="faq-trigger" aria-expanded="true" aria-controls="faq-1">
+            <span class="faq-question">Who is this for?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body" id="faq-1" role="region">
+            <div class="faq-body-inner">
+              <p class="faq-answer">
+                For professionals and business owners who want to grow on LinkedIn and get real opportunities — not just vanity metrics.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-2">
+            <span class="faq-question">What results can I expect?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body" id="faq-2" role="region">
+            <div class="faq-body-inner">
+              <p class="faq-answer">
+                More profile visibility, relevant connections, and qualified leads — usually within 4–8 weeks of consistent implementation.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-3">
+            <span class="faq-question">I've tried LinkedIn™ before. Why is this different?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body" id="faq-3" role="region">
+            <div class="faq-body-inner">
+              <p class="faq-answer">
+                Our data-driven strategy targets the right audience and ensures every action counts. No guesswork — just a repeatable system built around your specific goals.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-4">
+            <span class="faq-question">Do I need to be active every day?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body" id="faq-4" role="region">
+            <div class="faq-body-inner">
+              <p class="faq-answer">
+                No. A few smart, consistent actions per week are enough. We design a realistic rhythm that fits your schedule — not the other way around.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-5">
+            <span class="faq-question">What's in the Strategic Audit?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body" id="faq-5" role="region">
+            <div class="faq-body-inner">
+              <p class="faq-answer">
+                A full profile review, content strategy, audience targeting analysis, and a clear action plan — everything you need to move from invisible to authoritative.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-6">
+            <span class="faq-question">Do you work with teams or individuals?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body" id="faq-6" role="region">
+            <div class="faq-body-inner">
+              <p class="faq-answer">
+                Both. Our solutions adapt to solo professionals building a personal brand and to teams rolling out a company-wide LinkedIn presence.
+              </p>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+
+      <!-- CTA -->
+      <div class="faq-cta">
+        <p>Still have questions? Let's talk.</p>
+        <a href="#" class="btn-pink">Book a Strategic Audit</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="logo">Alina <span>Kovalchuk</span></div>
+    <p>© 2026 Alina Kovalchuk. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Accordion logic — one open at a time (with the first open by default)
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item    = trigger.closest('.faq-item');
+        const isOpen  = item.classList.contains('is-open');
+        const allItems = document.querySelectorAll('.faq-item');
+
+        // Close all
+        allItems.forEach(i => {
+          i.classList.remove('is-open');
+          i.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle clicked one open (unless it was already open)
+        if (!isOpen) {
+          item.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Free Call — Drive Your Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #c8a84b;
+      --red: #C62828;
+      --red-dark: #a01f1f;
+      --dark: #0d0e12;
+      --text: #f5f0e8;
+      --text-dim: rgba(245,240,232,0.65);
+      --text-faint: rgba(245,240,232,0.35);
+      --border: rgba(255,255,255,0.1);
+    }
+    html, body { height: 100%; }
+    body { background: var(--dark); color: var(--text); font-family: 'Barlow', sans-serif; display: flex; flex-direction: column; }
+
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; background: rgba(13,14,18,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--text); text-decoration: none; }
+    .back { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
+    .back:hover { color: var(--text); }
+
+    /* PAGE */
+    .page {
+      flex: 1; position: relative;
+      background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1600&q=80');
+      background-size: cover; background-position: center;
+    }
+    .page-overlay { position: absolute; inset: 0; background: rgba(13,14,18,0.85); }
+
+    .split {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      padding: 80px 48px; align-items: center; min-height: calc(100vh - 64px - 56px);
+    }
+    @media (max-width: 800px) { .split { grid-template-columns: 1fr; padding: 48px 24px; gap: 48px; } }
+
+    /* INFO */
+    .info-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+    .info-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 7vw, 76px); line-height: 0.95; margin-bottom: 20px; }
+    h1 em { color: var(--gold); font-style: normal; }
+    .info-desc { font-size: 15px; color: var(--text-dim); line-height: 1.75; margin-bottom: 40px; }
+    .perks { display: flex; flex-direction: column; gap: 14px; }
+    .perk { display: flex; align-items: center; gap: 16px; padding: 14px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; background: rgba(255,255,255,0.03); transition: border-color 0.2s; }
+    .perk:hover { border-color: rgba(200,168,75,0.3); }
+    .perk-icon { font-size: 20px; }
+    .perk-text { font-size: 14px; color: var(--text-dim); }
+
+    /* FORM CARD */
+    .form-card { background: rgba(13,14,18,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 44px 40px; }
+    @media (max-width: 480px) { .form-card { padding: 28px 20px; } }
+    .form-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 1px; margin-bottom: 6px; }
+    .form-sub { font-size: 14px; color: var(--text-dim); margin-bottom: 32px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .fg label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-faint); }
+    .fg input, .fg textarea {
+      background: rgba(255,255,255,0.04); border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.18);
+      border-radius: 4px 4px 0 0; padding: 12px 4px;
+      color: var(--text); font-family: 'Barlow', sans-serif; font-size: 15px;
+      outline: none; transition: border-color 0.2s; resize: none; width: 100%;
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color: var(--text-faint); }
+    .fg input:focus, .fg textarea:focus { border-bottom-color: var(--gold); }
+    .fg.invalid input, .fg.invalid textarea { border-bottom-color: #ef5350; }
+    .err { font-size: 12px; color: #ef5350; display: none; margin-top: 2px; }
+    .fg.invalid .err { display: block; }
+    .btn-submit {
+      width: 100%; padding: 16px; background: var(--red);
+      color: #fff; font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px; letter-spacing: 3px; border: none;
+      border-radius: 6px; cursor: pointer; margin-top: 8px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-submit:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 48px; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-faint); }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">🚛 Drive Your Business</a>
+  <a class="back" href="index.html">← Back to Home</a>
+</header>
+
+<div class="page">
+  <div class="page-overlay"></div>
+  <div class="split">
+
+    <div>
+      <div class="info-tag">Free Consultation</div>
+      <h1>Let's Talk About<br/>Your <em>Company</em></h1>
+      <p class="info-desc">Tell us about your fleet and what you need. We'll get back within 24 hours with a clear plan — no pressure, no fluff.</p>
+      <div class="perks">
+        <div class="perk"><div class="perk-icon">⚡</div><div class="perk-text">Response within 24 hours</div></div>
+        <div class="perk"><div class="perk-icon">🎯</div><div class="perk-text">Free audit of your current presence</div></div>
+        <div class="perk"><div class="perk-icon">🚛</div><div class="perk-text">Trucking companies only — we know your world</div></div>
+        <div class="perk"><div class="perk-icon">💬</div><div class="perk-text">No pressure, no hard sell</div></div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-title">Book a Free Call</div>
+      <div class="form-sub">Fill in the form and we'll reach out to schedule a call.</div>
+      <form id="cf" novalidate>
+        <div class="form-row">
+          <div class="fg" id="g1"><label>First Name *</label><input id="fn" type="text" placeholder="John"/><span class="err">Required</span></div>
+          <div class="fg" id="g2"><label>Last Name *</label><input id="ln" type="text" placeholder="Smith"/><span class="err">Required</span></div>
+        </div>
+        <div class="form-row">
+          <div class="fg" id="g3"><label>Phone *</label><input id="ph" type="tel" placeholder="+1 (555) 000-0000"/><span class="err">Required</span></div>
+          <div class="fg" id="g4"><label>Email *</label><input id="em" type="email" placeholder="you@company.com"/><span class="err">Valid email required</span></div>
+        </div>
+        <div class="fg"><label>Company Name</label><input type="text" placeholder="Your trucking company"/></div>
+        <div class="fg"><label>What do you need help with?</label><textarea rows="3" placeholder="Driver recruitment, social media, website..."></textarea></div>
+        <button type="submit" class="btn-submit">SEND REQUEST →</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<footer><p>© 2025 Drive Your Business. All rights reserved.</p></footer>
+
+<script>
+  document.getElementById('cf').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const checks = [
+      { el: document.getElementById('fn'), g: 'g1', ok: v => v.trim() },
+      { el: document.getElementById('ln'), g: 'g2', ok: v => v.trim() },
+      { el: document.getElementById('ph'), g: 'g3', ok: v => v.trim() },
+      { el: document.getElementById('em'), g: 'g4', ok: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+    ];
+    let ok = true;
+    checks.forEach(c => {
+      const g = document.getElementById(c.g);
+      if (!c.ok(c.el.value)) { g.classList.add('invalid'); ok = false; }
+      else g.classList.remove('invalid');
+    });
+    if (ok) window.location.href = 'thankyou.html';
+  });
+  document.querySelectorAll('input,textarea').forEach(el => el.addEventListener('input', function() { this.closest('.fg').classList.remove('invalid'); }));
+</script>
+</body>
+</html>

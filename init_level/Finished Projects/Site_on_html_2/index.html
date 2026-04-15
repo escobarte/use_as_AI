@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FREIGHTCO. — Freight Solutions You Can Rely On</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #FFDE73;
+      --color-accent: #FFDE73;
+      --color-bg: #000000;
+      --color-text: #000000;
+      --color-link: #FFDE73;
+      --color-white: #FFFFFF;
+      --color-gray-light: #F5F5F5;
+      --color-gray-dark: #1A1A1A;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 17px;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Oswald', 'Helvetica Neue', sans-serif;
+      font-weight: 700;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    h1 { font-size: clamp(60px, 7vw, 110px); }
+    h2 { font-size: clamp(42px, 5vw, 72px); line-height: 1; }
+    h3 { font-size: 32px; line-height: 1.1; }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      display: inline-block;
+      background: var(--color-primary);
+      color: #000;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 16px 36px;
+      border-radius: 0;
+      border: 2px solid var(--color-primary);
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary:hover { background: #ffe99a; border-color: #ffe99a; }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--color-primary);
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 36px;
+      border-radius: 0;
+      border: 2px solid var(--color-primary);
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { background: var(--color-primary); color: #000; }
+
+    /* SCROLL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===================== */
+    /* BLOCK 1 — HERO        */
+    /* ===================== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.72);
+    }
+
+    /* NAV */
+    nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 64px;
+      max-width: 1920px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #fff;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+    .logo span { color: var(--color-primary); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-primary); }
+
+    /* HERO CONTENT */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 64px 80px;
+      max-width: 1920px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-content h1 {
+      color: #fff;
+      max-width: 800px;
+      margin-bottom: 28px;
+    }
+    .hero-content h1 em {
+      color: var(--color-primary);
+      font-style: normal;
+    }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.8);
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .hero-search {
+      display: flex;
+      gap: 0;
+      max-width: 560px;
+    }
+    .hero-search input {
+      flex: 1;
+      padding: 16px 20px;
+      border: 2px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      border-radius: 0;
+    }
+    .hero-search input::placeholder { color: rgba(255,255,255,0.5); }
+    .hero-search input:first-child { border-right: none; }
+    .hero-search button {
+      padding: 16px 20px;
+      background: var(--color-primary);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-search button svg { width: 20px; height: 20px; }
+
+    /* ===================== */
+    /* BLOCK 2 — PARTNERS    */
+    /* ===================== */
+    #partners {
+      background: var(--color-gray-light);
+      padding: 56px 0;
+      overflow: hidden;
+    }
+
+    .partners-label {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #888;
+      margin-bottom: 40px;
+    }
+
+    .marquee-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-wrapper::before,
+    .marquee-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+    }
+    .marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--color-gray-light), transparent); }
+    .marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--color-gray-light), transparent); }
+
+    .marquee-track {
+      display: flex;
+      gap: 80px;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+      align-items: center;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .partner-logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      opacity: 0.7;
+    }
+
+    /* ===================== */
+    /* BLOCK 3 — SERVICES    */
+    /* ===================== */
+    #services {
+      background: #fff;
+      padding: 120px 0;
+    }
+
+    .services-header {
+      margin-bottom: 64px;
+    }
+    .services-header h2 {
+      color: #000;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      background: #111;
+      border-radius: 8px;
+      cursor: pointer;
+      aspect-ratio: 3/4;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); }
+
+    .service-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .service-card:hover img { transform: scale(1.05); }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    }
+
+    .service-info {
+      position: relative;
+      z-index: 2;
+      padding: 28px;
+    }
+    .service-info h3 {
+      color: #fff;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .service-info p {
+      color: rgba(255,255,255,0.75);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .service-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--color-primary);
+      color: #000;
+      transition: background 0.2s;
+    }
+    .service-card:hover .service-arrow { background: #fff; }
+
+    /* ===================== */
+    /* BLOCK 4 — WHY US      */
+    /* ===================== */
+    #why-us {
+      background: #0a0a0a;
+      padding: 120px 0;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-left h2 { color: #fff; margin-bottom: 28px; }
+
+    .why-sub {
+      color: rgba(255,255,255,0.6);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+      max-width: 480px;
+    }
+
+    .why-points { display: flex; flex-direction: column; gap: 28px; }
+
+    .why-point {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .why-icon {
+      width: 12px;
+      height: 12px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .why-point-text strong {
+      display: block;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .why-point-text span {
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .why-right {
+      position: relative;
+    }
+    .why-right img {
+      width: 100%;
+      height: 580px;
+      object-fit: cover;
+      display: block;
+      border-left: 4px solid var(--color-primary);
+    }
+
+    /* ===================== */
+    /* BLOCK 5 — GALLERY     */
+    /* ===================== */
+    #gallery {
+      background: #fff;
+      padding: 120px 0;
+    }
+
+    .gallery-header {
+      margin-bottom: 64px;
+    }
+    .gallery-header h2 { color: #000; margin-bottom: 16px; }
+    .gallery-header p { color: #555; font-size: 17px; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .gallery-item:nth-child(1) { grid-column: span 2; }
+    .gallery-item:nth-child(4) { grid-column: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,222,115,0);
+      transition: background 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay { background: rgba(255,222,115,0.18); }
+
+    /* ===================== */
+    /* BLOCK 6 — LOCATIONS   */
+    /* ===================== */
+    #locations {
+      background: var(--color-gray-light);
+      padding: 120px 0;
+    }
+
+    .locations-header { margin-bottom: 20px; }
+    .locations-header h2 { color: #000; }
+    .locations-sub {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 56px;
+      margin-top: 16px;
+    }
+
+    .map-container {
+      position: relative;
+      width: 100%;
+      background: #e8e8e8;
+      border-radius: 0;
+      overflow: visible;
+      margin-bottom: 72px;
+    }
+
+    .world-map-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .map-marker {
+      position: relative;
+    }
+    .map-marker circle {
+      fill: var(--color-primary);
+      cursor: pointer;
+      transition: r 0.2s;
+    }
+    .map-marker:hover circle { r: 10; }
+
+    .map-tooltip {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .map-marker:hover .map-tooltip { opacity: 1; }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 2px solid #ddd;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .stat-item {
+      padding: 40px 32px;
+      border-right: 1px solid #ddd;
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: #000;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+
+    /* ===================== */
+    /* BLOCK 7 — TRACK/CTA   */
+    /* ===================== */
+    #track {
+      position: relative;
+      background: #0a0a0a;
+      padding: 120px 0;
+      overflow: hidden;
+    }
+
+    .track-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
+    }
+
+    .track-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .track-left h2 { color: #fff; margin-bottom: 40px; }
+
+    .track-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .track-input, .track-select {
+      width: 100%;
+      padding: 18px 20px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #fff;
+      font-size: 15px;
+      border-radius: 0;
+      outline: none;
+      font-family: Arial, sans-serif;
+    }
+    .track-input::placeholder { color: #666; }
+    .track-select { color: #666; cursor: pointer; }
+    .track-select option { color: #fff; background: #1a1a1a; }
+
+    .track-right {
+      background: #1a1a1a;
+      padding: 48px;
+    }
+    .track-right h3 { color: #fff; margin-bottom: 16px; font-size: 28px; }
+    .track-right > p {
+      color: rgba(255,255,255,0.55);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .quote-form { display: flex; flex-direction: column; gap: 12px; }
+    .quote-form input {
+      width: 100%;
+      padding: 16px 20px;
+      background: #111;
+      border: 1px solid #333;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 0;
+      outline: none;
+      font-family: Arial, sans-serif;
+    }
+    .quote-form input::placeholder { color: #555; }
+
+    /* ===================== */
+    /* BLOCK 8 — FOOTER      */
+    /* ===================== */
+    #footer {
+      background: #000;
+      padding: 0;
+    }
+
+    .footer-cta {
+      padding: 120px 64px;
+      max-width: 1440px;
+      margin: 0 auto;
+      border-bottom: 1px solid #222;
+    }
+
+    .footer-cta h2 {
+      color: #fff;
+      font-size: clamp(56px, 7vw, 110px);
+      margin-bottom: 48px;
+      max-width: 800px;
+    }
+
+    .footer-cta-buttons { display: flex; gap: 16px; }
+
+    .footer-nav {
+      padding: 80px 64px;
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 60px;
+    }
+
+    .footer-brand .logo { font-size: 24px; display: inline-block; margin-bottom: 16px; }
+    .footer-brand p {
+      color: rgba(255,255,255,0.45);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 260px;
+    }
+
+    .social-links { display: flex; gap: 16px; }
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid #333;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 16px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-link:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+    .footer-col h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--color-primary); }
+    .footer-col ul li { color: rgba(255,255,255,0.45); font-size: 14px; line-height: 1.5; }
+
+    .footer-bottom {
+      border-top: 1px solid #222;
+      padding: 24px 64px;
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-bottom p {
+      color: rgba(255,255,255,0.3);
+      font-size: 13px;
+    }
+    .footer-bottom a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+    }
+    .footer-bottom a:hover { color: var(--color-primary); }
+
+    /* ===================== */
+    /* RESPONSIVE            */
+    /* ===================== */
+    @media (max-width: 1440px) {
+      .container { padding: 0 48px; }
+      nav { padding: 28px 48px; }
+      .hero-content { padding: 60px 48px 80px; }
+      .footer-cta { padding: 100px 48px; }
+      .footer-nav { padding: 64px 48px; }
+      .footer-bottom { padding: 24px 48px; }
+    }
+
+    @media (max-width: 1024px) {
+      h1 { font-size: 64px; }
+      h2 { font-size: 48px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; gap: 48px; }
+      .why-right img { height: 400px; }
+      .track-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-nav { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-top: 1px solid #ddd; }
+      .stat-item:nth-child(4) { border-top: 1px solid #ddd; border-right: none; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero-content { padding: 40px 24px 60px; }
+      h1 { font-size: 48px; }
+      h2 { font-size: 36px; }
+      h3 { font-size: 26px; }
+      .container { padding: 0 24px; }
+      #services, #why-us, #gallery, #locations, #track { padding: 80px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item:nth-child(1), .gallery-item:nth-child(4) { grid-column: span 2; }
+      .footer-cta { padding: 64px 24px; }
+      .footer-nav { padding: 48px 24px; grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-bottom { padding: 20px 24px; flex-direction: column; gap: 12px; text-align: center; }
+      .hero-search { flex-direction: column; }
+      .hero-search input:first-child { border-right: 2px solid rgba(255,255,255,0.25); }
+    }
+
+    @media (max-width: 375px) {
+      h1 { font-size: 38px; }
+      h2 { font-size: 30px; }
+      .hero-buttons { flex-direction: column; }
+      .footer-nav { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:nth-child(1), .gallery-item:nth-child(4) { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== -->
+<!-- BLOCK 1 — HERO        -->
+<!-- ===================== -->
+<header id="hero">
+  <div class="hero-bg"></div>
+
+  <nav>
+    <a href="#" class="logo">FREIGHT<span>CO.</span></a>
+    <ul class="nav-links">
+      <li><a href="#track">Track Shipment</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#footer">Reviews</a></li>
+      <li><a href="#footer" class="btn-primary" style="padding:12px 24px;font-size:13px;">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-content">
+    <h1>Delivering<br>Your Cargo<br><em>Worldwide.</em></h1>
+    <p class="hero-sub">Reliable freight solutions for businesses of all sizes.<br>Sea, air, and rail — wherever you need to go.</p>
+    <div class="hero-buttons">
+      <a href="#track" class="btn-primary">Get a Quote</a>
+      <a href="#services" class="btn-secondary">Learn More</a>
+    </div>
+    <div class="hero-search">
+      <input type="text" placeholder="Enter pickup location" aria-label="Pickup location">
+      <input type="text" placeholder="Enter destination" aria-label="Destination">
+      <button aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== -->
+<!-- BLOCK 2 — PARTNERS    -->
+<!-- ===================== -->
+<section id="partners">
+  <p class="partners-label">Trusted by leading companies worldwide</p>
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <span class="partner-logo">OXFAM</span>
+      <span class="partner-logo">DT Global</span>
+      <span class="partner-logo">NAYBA</span>
+      <span class="partner-logo">MOVE</span>
+      <span class="partner-logo">Winsupply</span>
+      <span class="partner-logo">FERGUSON</span>
+      <span class="partner-logo">MAERSK</span>
+      <span class="partner-logo">DHL</span>
+      <!-- duplicate for seamless loop -->
+      <span class="partner-logo">OXFAM</span>
+      <span class="partner-logo">DT Global</span>
+      <span class="partner-logo">NAYBA</span>
+      <span class="partner-logo">MOVE</span>
+      <span class="partner-logo">Winsupply</span>
+      <span class="partner-logo">FERGUSON</span>
+      <span class="partner-logo">MAERSK</span>
+      <span class="partner-logo">DHL</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- BLOCK 3 — SERVICES    -->
+<!-- ===================== -->
+<section id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <h2>Shipping &amp; Logistics<br>Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=800&q=80" alt="Cargo ship at sea — Sea Shipping">
+        <div class="service-info">
+          <h3>Sea Shipping</h3>
+          <p>Fast and reliable ocean freight for bulk cargo across major global ports.</p>
+          <div class="service-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80" alt="Cargo airplane in flight — Air Shipping">
+        <div class="service-info">
+          <h3>Air Shipping</h3>
+          <p>Express air cargo delivery for time-sensitive shipments worldwide.</p>
+          <div class="service-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&q=80" alt="Freight train on railway — Rail Shipping">
+        <div class="service-info">
+          <h3>Rail Shipping</h3>
+          <p>Cost-effective rail freight solutions across continental routes.</p>
+          <div class="service-arrow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- BLOCK 4 — WHY US      -->
+<!-- ===================== -->
+<section id="why-us">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-left reveal">
+        <h2>Powering Logistics<br>Across Business</h2>
+        <p class="why-sub">We help your customers, scale operations, and boost efficiency with our advanced logistics platform, set to be the go-to solution for your supply chain.</p>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-icon"></div>
+            <div class="why-point-text">
+              <strong>Nationwide carrier network</strong>
+              <span>Access to 500+ verified carriers across all regions</span>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-icon"></div>
+            <div class="why-point-text">
+              <strong>Fully featured logistics software</strong>
+              <span>Real-time tracking, automated reports, smart routing</span>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-icon"></div>
+            <div class="why-point-text">
+              <strong>Exception tracking &amp; live support</strong>
+              <span>24/7 monitoring with instant alerts and dedicated managers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-right reveal">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="Stacked orange shipping containers — dramatic low angle view">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- BLOCK 5 — GALLERY     -->
+<!-- ===================== -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <h2>Operations Worldwide</h2>
+      <p>From port to door — we handle every mile with precision.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1504284011903-e5e8ca5e7a3b?w=1000&q=80" alt="Aerial view of container port">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&q=80" alt="Truck driver in logistics">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80" alt="Warehouse interior with logistics operations">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1000&q=80" alt="Cargo plane on runway at night">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80" alt="Business handshake at shipping company">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=600&q=80" alt="Port at sunset with containers">
+        <div class="gallery-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- BLOCK 6 — LOCATIONS   -->
+<!-- ===================== -->
+<section id="locations">
+  <div class="container">
+    <div class="locations-header reveal">
+      <h2>Find Locations To Buy, Sell<br>Or Lease Containers</h2>
+      <p class="locations-sub">With depots on every continent, we're always close to where you need us.</p>
+    </div>
+
+    <div class="map-container reveal">
+      <!-- Simplified world map SVG with markers -->
+      <svg class="world-map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" aria-label="World map showing FREIGHTCO locations">
+        <rect width="1000" height="500" fill="#dde4ed"/>
+        <!-- Simplified continent shapes -->
+        <!-- North America -->
+        <path d="M 80 60 L 280 60 L 310 90 L 300 140 L 280 180 L 240 220 L 200 260 L 160 280 L 120 260 L 80 220 L 60 160 L 70 100 Z" fill="#c8d3df" stroke="#b0bec5" stroke-width="1"/>
+        <!-- South America -->
+        <path d="M 180 290 L 240 280 L 270 320 L 280 380 L 260 440 L 220 460 L 190 440 L 170 400 L 160 350 L 165 310 Z" fill="#c8d3df" stroke="#b0bec5" stroke-width="1"/>
+        <!-- Europe -->
+        <path d="M 430 50 L 530 50 L 560 80 L 550 130 L 510 150 L 470 140 L 430 110 L 420 80 Z" fill="#c8d3df" stroke="#b0bec5" stroke-width="1"/>
+        <!-- Africa -->
+        <path d="M 440 160 L 530 150 L 560 180 L 560 280 L 540 360 L 500 400 L 460 390 L 430 340 L 420 260 L 425 200 Z" fill="#c8d3df" stroke="#b0bec5" stroke-width="1"/>
+        <!-- Asia -->
+        <path d="M 560 40 L 800 40 L 840 80 L 850 140 L 820 180 L 760 200 L 700 210 L 640 200 L 590 180 L 555 140 L 550 90 Z" fill="#c8d3df" stroke="#b0bec5" stroke-width="1"/>
+        <!-- Southeast Asia / Oceania -->
+        <path d="M 760 220 L 840 200 L 880 230 L 870 280 L 820 290 L 770 270 Z" fill="#c8d3df" stroke="#b0bec5" stroke-width="1"/>
+        <path d="M 840 320 L 940 300 L 960 360 L 930 410 L 870 420 L 830 390 L 820 350 Z" fill="#c8d3df" stroke="#b0bec5" stroke-width="1"/>
+
+        <!-- City Markers with tooltips -->
+        <!-- New York: ~160,165 -->
+        <g class="map-marker">
+          <circle cx="160" cy="165" r="7" fill="#FFDE73" stroke="#000" stroke-width="1.5"/>
+          <g class="map-tooltip">
+            <rect x="120" y="140" width="95" height="22" rx="2" fill="#000"/>
+            <text x="167" y="155" text-anchor="middle" fill="#FFDE73" font-size="11" font-family="Arial">New York</text>
+          </g>
+        </g>
+        <!-- London: ~460,90 -->
+        <g class="map-marker">
+          <circle cx="462" cy="88" r="7" fill="#FFDE73" stroke="#000" stroke-width="1.5"/>
+          <g class="map-tooltip">
+            <rect x="428" y="64" width="72" height="22" rx="2" fill="#000"/>
+            <text x="464" y="79" text-anchor="middle" fill="#FFDE73" font-size="11" font-family="Arial">London</text>
+          </g>
+        </g>
+        <!-- Dubai: ~630,170 -->
+        <g class="map-marker">
+          <circle cx="628" cy="168" r="7" fill="#FFDE73" stroke="#000" stroke-width="1.5"/>
+          <g class="map-tooltip">
+            <rect x="594" y="144" width="68" height="22" rx="2" fill="#000"/>
+            <text x="628" y="159" text-anchor="middle" fill="#FFDE73" font-size="11" font-family="Arial">Dubai</text>
+          </g>
+        </g>
+        <!-- Singapore: ~770,265 -->
+        <g class="map-marker">
+          <circle cx="768" cy="262" r="7" fill="#FFDE73" stroke="#000" stroke-width="1.5"/>
+          <g class="map-tooltip">
+            <rect x="724" y="238" width="90" height="22" rx="2" fill="#000"/>
+            <text x="769" y="253" text-anchor="middle" fill="#FFDE73" font-size="11" font-family="Arial">Singapore</text>
+          </g>
+        </g>
+        <!-- Shanghai: ~810,130 -->
+        <g class="map-marker">
+          <circle cx="808" cy="128" r="7" fill="#FFDE73" stroke="#000" stroke-width="1.5"/>
+          <g class="map-tooltip">
+            <rect x="768" y="104" width="82" height="22" rx="2" fill="#000"/>
+            <text x="809" y="119" text-anchor="middle" fill="#FFDE73" font-size="11" font-family="Arial">Shanghai</text>
+          </g>
+        </g>
+        <!-- Sydney: ~890,375 -->
+        <g class="map-marker">
+          <circle cx="888" cy="372" r="7" fill="#FFDE73" stroke="#000" stroke-width="1.5"/>
+          <g class="map-tooltip">
+            <rect x="850" y="348" width="76" height="22" rx="2" fill="#000"/>
+            <text x="888" y="363" text-anchor="middle" fill="#FFDE73" font-size="11" font-family="Arial">Sydney</text>
+          </g>
+        </g>
+        <!-- São Paulo: ~220,370 -->
+        <g class="map-marker">
+          <circle cx="218" cy="368" r="7" fill="#FFDE73" stroke="#000" stroke-width="1.5"/>
+          <g class="map-tooltip">
+            <rect x="170" y="344" width="96" height="22" rx="2" fill="#000"/>
+            <text x="218" y="359" text-anchor="middle" fill="#FFDE73" font-size="11" font-family="Arial">São Paulo</text>
+          </g>
+        </g>
+        <!-- Lagos: ~474,268 -->
+        <g class="map-marker">
+          <circle cx="474" cy="266" r="7" fill="#FFDE73" stroke="#000" stroke-width="1.5"/>
+          <g class="map-tooltip">
+            <rect x="440" y="242" width="68" height="22" rx="2" fill="#000"/>
+            <text x="474" y="257" text-anchor="middle" fill="#FFDE73" font-size="11" font-family="Arial">Lagos</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="stats-row reveal">
+      <div class="stat-item">
+        <div class="stat-num">500<span style="color:var(--color-primary)">+</span></div>
+        <div class="stat-label">Carriers Worldwide</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">48</div>
+        <div class="stat-label">Countries Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10K<span style="color:var(--color-primary)">+</span></div>
+        <div class="stat-label">Shipments Monthly</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--color-primary)">24/7</div>
+        <div class="stat-label">Live Support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- BLOCK 7 — TRACK/CTA   -->
+<!-- ===================== -->
+<section id="track">
+  <div class="track-bg"></div>
+  <div class="container">
+    <div class="track-grid">
+      <div class="track-left reveal">
+        <h2>Track or Calculate<br>Your Shipments</h2>
+        <div class="track-form">
+          <input class="track-input" type="text" placeholder="Enter your shipment code" aria-label="Shipment code">
+          <select class="track-select" aria-label="Select service">
+            <option value="" disabled selected>Select Your Service</option>
+            <option value="sea">Sea Freight</option>
+            <option value="air">Air Freight</option>
+            <option value="rail">Rail Freight</option>
+          </select>
+          <button class="btn-primary" style="align-self:flex-start;">Track Now</button>
+        </div>
+      </div>
+      <div class="track-right reveal">
+        <h3>Quickly Track Your Shipments</h3>
+        <p>Get an instant freight quote in under 2 minutes. No hidden fees.</p>
+        <div class="quote-form">
+          <input type="text" placeholder="Origin" aria-label="Origin">
+          <input type="text" placeholder="Destination" aria-label="Destination">
+          <input type="number" placeholder="Weight (kg)" aria-label="Weight in kg">
+          <button class="btn-primary">Get Instant Quote</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- BLOCK 8 — FOOTER      -->
+<!-- ===================== -->
+<footer id="footer">
+  <div class="footer-cta reveal">
+    <h2>Ready to Ship<br>With Confidence?</h2>
+    <div class="footer-cta-buttons">
+      <a href="#track" class="btn-primary">Start Now</a>
+      <a href="#track" class="btn-secondary">Talk to an Expert</a>
+    </div>
+  </div>
+
+  <div class="footer-nav">
+    <div class="footer-brand">
+      <a href="#" class="logo">FREIGHT<span style="color:var(--color-primary)">CO.</span></a>
+      <p>Reliable freight for a connected world. Trusted by businesses across 48 countries.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+        <a href="#" class="social-link" aria-label="Facebook">f</a>
+        <a href="#" class="social-link" aria-label="Instagram">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Sea Freight</a></li>
+        <li><a href="#">Air Freight</a></li>
+        <li><a href="#">Rail Freight</a></li>
+        <li><a href="#">Customs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>hello@freightco.com</li>
+        <li>+1 800 FREIGHT</li>
+        <li>123 Harbor Blvd,<br>New York, NY 10001</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 FREIGHTCO. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></p>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Hero visible immediately
+  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
+</script>
+</body>
+</html>
