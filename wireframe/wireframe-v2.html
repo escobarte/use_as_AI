@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireframe v2 — Transnatur INC · Logistics Landing Page</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --page-w:    1100px;
+    --bg:        #f0f2f5;
+    --surface:   #ffffff;
+    --dark-bg:   #1a2234;
+    --border:    #b0bccf;
+    --muted:     #c8d0dc;
+    --muted2:    #e2e7ef;
+    --dark:      #1a2234;
+    --label:     #5c6f8a;
+    --accent:    #3b5bdb;
+    --red:       #e63946;
+    --font:      'Inter', system-ui, sans-serif;
+    --lw:        1.5px;
+    --r:         6px;
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--dark);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* ── Layout ── */
+  .page     { padding: 0 32px 64px; }
+  .wrap     { max-width: var(--page-w); margin: 0 auto; }
+
+  /* ── Wireframe frame ── */
+  .wf {
+    border: var(--lw) dashed var(--border);
+    border-radius: var(--r);
+    background: var(--surface);
+    position: relative;
+    margin-bottom: 2px;
+  }
+  .wf-dark {
+    background: var(--dark-bg);
+    border-color: #3a4a65;
+  }
+  .wf-gray {
+    background: #f7f9fc;
+    border-color: var(--border);
+  }
+
+  /* ── Section label pill ── */
+  .slabel {
+    position: absolute;
+    top: -12px; left: 20px;
+    background: var(--surface);
+    border: var(--lw) solid var(--border);
+    border-radius: 20px;
+    padding: 1px 10px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--label);
+    white-space: nowrap;
+  }
+  .slabel-dark {
+    background: var(--dark-bg);
+    border-color: #3a4a65;
+    color: #6b84ad;
+  }
+
+  /* ── Annotation badge ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--label);
+    background: #eef1f7;
+    border: 1px solid var(--muted);
+    border-radius: 3px;
+    padding: 2px 7px;
+  }
+  .badge.blue  { background: #e8edff; border-color: #a5b4fc; color: var(--accent); }
+  .badge.red   { background: #fde8ea; border-color: #f5a3a8; color: var(--red); }
+  .badge.green { background: #e8f5e9; border-color: #a5d6a7; color: #2e7d32; }
+
+  /* ── Placeholder lines ── */
+  .ph { background: var(--muted); border-radius: 3px; }
+  .ph-h1  { height: 32px; }
+  .ph-h2  { height: 22px; }
+  .ph-h3  { height: 14px; }
+  .ph-p   { height: 10px; }
+  .ph-sm  { height: 8px; }
+  .ph-dk  { background: #2e4070; }   /* dark bg lines */
+
+  /* width helpers */
+  .w100 { width: 100%; }
+  .w80  { width: 80%; }
+  .w65  { width: 65%; }
+  .w50  { width: 50%; }
+  .w40  { width: 40%; }
+  .w30  { width: 30%; }
+
+  /* ── Image placeholder ── */
+  .img-ph {
+    background: var(--muted2);
+    border: var(--lw) solid var(--muted);
+    border-radius: var(--r);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-ph svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .img-ph-label {
+    position: relative; z-index: 1;
+    font-size: 10px; font-weight: 500;
+    color: var(--label);
+    text-align: center;
+    padding: 8px;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 22px;
+    border-radius: 5px;
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: default;
+    border: var(--lw) solid;
+    white-space: nowrap;
+  }
+  .btn-solid  { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn-outline{ background: transparent; color: var(--accent); border-color: var(--accent); }
+  .btn-dark   { background: #fff; color: var(--dark); border-color: #fff; }
+  .btn-ghost-dk{ background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
+  .btn-sm     { padding: 6px 14px; font-size: 11px; }
+
+  /* ── Flex utilities ── */
+  .row  { display: flex; gap: 16px; }
+  .col  { flex: 1; }
+  .aic  { align-items: center; }
+  .aifs { align-items: flex-start; }
+  .jcsb { justify-content: space-between; }
+  .jcc  { justify-content: center; }
+  .jcfe { justify-content: flex-end; }
+  .wrap-flex { flex-wrap: wrap; }
+
+  /* spacing */
+  .mt4  { margin-top: 4px; }
+  .mt8  { margin-top: 8px; }
+  .mt12 { margin-top: 12px; }
+  .mt16 { margin-top: 16px; }
+  .mt20 { margin-top: 20px; }
+  .mt24 { margin-top: 24px; }
+  .mb4  { margin-bottom: 4px; }
+  .mb8  { margin-bottom: 8px; }
+  .mb12 { margin-bottom: 12px; }
+  .mb16 { margin-bottom: 16px; }
+
+  /* ── Gap variants ── */
+  .g4  { gap: 4px; }
+  .g8  { gap: 8px; }
+  .g12 { gap: 12px; }
+  .g20 { gap: 20px; }
+  .g24 { gap: 24px; }
+  .g32 { gap: 32px; }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 0 32px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo-block {
+    width: 140px; height: 28px;
+    border: var(--lw) solid var(--muted);
+    border-radius: 4px;
+    background: var(--muted2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: var(--label);
+    letter-spacing: .06em;
+  }
+  .nav-menu { display: flex; gap: 28px; }
+  .nav-item { font-size: 12px; color: var(--label); border-bottom: var(--lw) solid var(--muted); padding-bottom: 1px; }
+  .nav-actions { display: flex; gap: 10px; align-items: center; }
+
+  /* ── HERO ── */
+  .hero { padding: 48px 48px 40px; min-height: 440px; }
+  .hero-left  { flex: 1.1; display: flex; flex-direction: column; justify-content: center; }
+  .hero-right { flex: 1; }
+
+  /* Metric badges under hero text */
+  .metric-row { display: flex; gap: 24px; margin-top: 28px; flex-wrap: wrap; }
+  .metric {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .metric-val {
+    width: 64px; height: 20px;
+    background: var(--accent);
+    border-radius: 3px;
+    opacity: .2;
+  }
+  .metric-val.filled { opacity: 1; }
+
+  /* ── SERVICES GRID 3×2 ── */
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .svc-card {
+    border: var(--lw) solid var(--muted);
+    border-radius: var(--r);
+    padding: 20px 16px;
+    background: var(--surface);
+  }
+  .icon-sq {
+    width: 38px; height: 38px;
+    border: var(--lw) solid var(--muted);
+    border-radius: 8px;
+    background: var(--muted2);
+    margin-bottom: 12px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .icon-sq svg { opacity: .35; }
+
+  /* ── TRUST 2-col ── */
+  .trust-list { display: flex; flex-direction: column; gap: 0; }
+  .trust-row {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--muted2);
+  }
+  .trust-row:last-child { border-bottom: none; }
+  .trust-dot {
+    width: 28px; height: 28px; flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--muted2);
+    border: var(--lw) solid var(--muted);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: var(--label);
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testi-card {
+    flex: 1;
+    border: var(--lw) solid var(--muted);
+    border-radius: var(--r);
+    padding: 20px 18px;
+    background: var(--surface);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .testi-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--muted2);
+    border: var(--lw) solid var(--muted);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: var(--label);
+    flex-shrink: 0;
+  }
+  .stars { display: flex; gap: 2px; }
+  .star  { width: 12px; height: 12px; background: #fbbf24; border-radius: 2px; }
+
+  /* ── FAQ ── */
+  .faq-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px;
+    border: var(--lw) solid var(--muted);
+    border-radius: var(--r);
+    margin-bottom: 8px;
+    background: var(--surface);
+    cursor: default;
+  }
+  .faq-row.open { background: #f7f9fc; border-color: var(--accent); }
+  .faq-expanded {
+    border: var(--lw) solid var(--accent);
+    border-top: none;
+    border-radius: 0 0 var(--r) var(--r);
+    padding: 14px 16px;
+    background: #f0f4ff;
+    margin-top: -8px;
+    margin-bottom: 8px;
+  }
+  .chevron {
+    width: 20px; height: 20px; flex-shrink: 0;
+    border: var(--lw) solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; color: var(--label);
+  }
+  .chevron.up { border-color: var(--accent); color: var(--accent); }
+
+  /* ── FOOTER ── */
+  .footer { padding: 48px 48px 32px; }
+  .footer-logo {
+    width: 130px; height: 26px;
+    background: #2e4070;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: #6b84ad;
+    letter-spacing: .06em;
+    margin-bottom: 12px;
+  }
+  .footer-col { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-title { font-size: 10px; font-weight: 700; color: #6b84ad; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+  .footer-link { height: 8px; background: #2e4070; border-radius: 2px; }
+  .footer-divider { height: 1px; background: #2e4070; margin: 24px 0 16px; }
+  .social-icon {
+    width: 28px; height: 28px;
+    border: var(--lw) solid #3a4a65;
+    border-radius: 50%;
+    background: #2a3a58;
+  }
+
+  /* ── Redline / spec annotations ── */
+  .spec-line {
+    position: absolute;
+    border-top: 1px solid rgba(230,57,70,.5);
+  }
+  .spec-arrow {
+    font-size: 9px; color: var(--red);
+    position: absolute;
+  }
+
+  /* ── Section padding box ── */
+  .sec-pad { padding: 48px 48px; }
+  .sec-pad-sm { padding: 32px 48px; }
+
+  /* ── Center helper ── */
+  .tc { text-align: center; }
+  .tc .ph { margin-left: auto; margin-right: auto; }
+
+  /* ── ruler ── */
+  .ruler {
+    display: flex; justify-content: space-between;
+    font-size: 8px; color: #a0b0c8;
+    max-width: var(--page-w);
+    margin: 0 auto 4px;
+    letter-spacing: .05em;
+  }
+
+  /* ── version badge ── */
+  .version-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+  }
+
+  /* ── Sticky section spacer ── */
+  .gap { height: 2px; }
+
+  /* ── Redline measurement ── */
+  .measure {
+    font-size: 8px; color: rgba(230,57,70,.75);
+    text-align: center;
+    padding: 0 4px;
+  }
+  .vline {
+    display: inline-block;
+    width: 1px; height: 12px;
+    background: rgba(230,57,70,.4);
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+
+<div class="page" style="padding-top: 24px;">
+<div class="wrap">
+
+  <!-- ── Page title ── -->
+  <div style="display:flex; align-items:center; justify-content:space-between; max-width:var(--page-w); margin:0 auto 14px;">
+    <div>
+      <div class="version-tag">Wireframe v2</div>
+      <div style="font-size:12px; color:var(--label); margin-top:2px;">Transnatur INC · Logistics Landing Page · 1100px grid</div>
+    </div>
+    <div style="text-align:right; font-size:9px; color:#a0b0c8; line-height:1.8;">
+      Ref: company-website-tau-red.vercel.app<br>
+      Sections: 8 · Grid: 12-col · Breakpoint: 1100px
+    </div>
+  </div>
+
+  <div class="ruler">
+    <span>0</span><span>137px</span><span>275px</span><span>412px</span><span>550px</span>
+    <span>687px</span><span>825px</span><span>962px</span><span>1100px</span>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       01 · HEADER
+  ════════════════════════════════════════ -->
+  <div class="wf" style="margin-top:4px;">
+    <span class="slabel">01 · Header / Navigation</span>
+    <div class="header">
+
+      <div class="logo-block">TRANSNATUR INC</div>
+
+      <nav class="nav-menu">
+        <span class="nav-item">Home</span>
+        <span class="nav-item">About</span>
+        <span class="nav-item">Services</span>
+        <span class="nav-item">Blog</span>
+        <span class="nav-item">Contact</span>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline btn-sm">Log in</button>
+        <button class="btn btn-solid btn-sm">Get a quote</button>
+      </div>
+
+    </div>
+    <!-- redline note -->
+    <div style="position:absolute; bottom:4px; left:50%; transform:translateX(-50%); display:flex; gap:8px; align-items:center;">
+      <span class="badge">height: 60px</span>
+      <span class="badge">position: sticky · z-index: 100</span>
+    </div>
+  </div>
+
+  <div class="gap"></div>
+
+  <!-- ════════════════════════════════════════
+       02 · HERO
+  ════════════════════════════════════════ -->
+  <div class="wf">
+    <span class="slabel">02 · Hero Section — Split Layout</span>
+    <div class="hero row g32">
+
+      <!-- LEFT: copy block -->
+      <div class="hero-left">
+
+        <div class="badge blue mb12">Logistics · Freight · Dispatch</div>
+
+        <!-- H1 -->
+        <div class="ph ph-h1 w100 mb4"></div>
+        <div class="ph ph-h1 w80 mb16"></div>
+
+        <!-- Subheadline -->
+        <div class="ph ph-p w100 mb4"></div>
+        <div class="ph ph-p w80 mb4"></div>
+        <div class="ph ph-p w65 mb20"></div>
+
+        <!-- CTA buttons -->
+        <div class="row g8 aic">
+          <button class="btn btn-solid">Apply now</button>
+          <button class="btn btn-outline">See our services</button>
+        </div>
+
+        <!-- Inline metrics row -->
+        <div class="metric-row">
+          <div class="metric">
+            <div style="height:22px; width:56px; background:var(--accent); border-radius:3px;"></div>
+            <div class="ph ph-sm w100" style="width:56px;"></div>
+            <div class="badge">500+ Loads</div>
+          </div>
+          <div style="width:1px; background:var(--muted); align-self:stretch;"></div>
+          <div class="metric">
+            <div style="height:22px; width:56px; background:var(--accent); border-radius:3px;"></div>
+            <div class="ph ph-sm" style="width:56px;"></div>
+            <div class="badge">12 Yrs Exp.</div>
+          </div>
+          <div style="width:1px; background:var(--muted); align-self:stretch;"></div>
+          <div class="metric">
+            <div style="height:22px; width:56px; background:#fbbf24; border-radius:3px;"></div>
+            <div class="ph ph-sm" style="width:56px;"></div>
+            <div class="badge">4.9 ★ Rating</div>
+          </div>
+          <div style="width:1px; background:var(--muted); align-self:stretch;"></div>
+          <div class="metric">
+            <div style="height:22px; width:56px; background:#2e7d32; border-radius:3px; opacity:.5;"></div>
+            <div class="ph ph-sm" style="width:56px;"></div>
+            <div class="badge green">DOT Certified</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: image -->
+      <div class="hero-right">
+        <div class="img-ph" style="height: 360px;">
+          <svg viewBox="0 0 500 360" preserveAspectRatio="none">
+            <line x1="0" y1="0"   x2="500" y2="360" stroke="#b0bccf" stroke-width="1.5"/>
+            <line x1="500" y1="0" x2="0"   y2="360" stroke="#b0bccf" stroke-width="1.5"/>
+          </svg>
+          <div class="img-ph-label">Hero Image<br>Truck on Highway<br>Full-width photo</div>
+        </div>
+        <div style="font-size:9px; color:var(--label); margin-top:4px; text-align:right;">
+          aspect-ratio: 4/3 · border-radius: 12px
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gap"></div>
+
+  <!-- ════════════════════════════════════════
+       03 · SERVICES GRID
+  ════════════════════════════════════════ -->
+  <div class="wf wf-gray">
+    <span class="slabel">03 · Services — "Everything You Need on the Road"</span>
+    <div class="sec-pad">
+
+      <!-- Section header -->
+      <div class="tc mb24">
+        <div class="badge blue mb8">Our Services</div>
+        <div class="ph ph-h2 w50 mb8" style="margin:8px auto;"></div>
+        <div class="ph ph-p w40" style="margin:0 auto;"></div>
+      </div>
+
+      <!-- 3×2 Grid -->
+      <div class="svc-grid">
+
+        <!-- Card 1: FTL -->
+        <div class="svc-card">
+          <div class="icon-sq">
+            <svg width="20" height="20" viewBox="0 0 20 20"><rect x="2" y="6" width="16" height="9" rx="2" stroke="#5c6f8a" fill="none" stroke-width="1.5"/><circle cx="6" cy="15" r="2" stroke="#5c6f8a" fill="none" stroke-width="1.5"/><circle cx="14" cy="15" r="2" stroke="#5c6f8a" fill="none" stroke-width="1.5"/></svg>
+          </div>
+          <div class="badge mb8">FTL</div>
+          <div class="ph ph-h3 w100 mb8"></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w80 mb4"></div>
+          <div class="ph ph-p w65"></div>
+        </div>
+
+        <!-- Card 2: LTL -->
+        <div class="svc-card">
+          <div class="icon-sq">
+            <svg width="20" height="20" viewBox="0 0 20 20"><rect x="2" y="8" width="10" height="7" rx="2" stroke="#5c6f8a" fill="none" stroke-width="1.5"/><rect x="12" y="4" width="6" height="11" rx="2" stroke="#5c6f8a" fill="none" stroke-width="1.5"/></svg>
+          </div>
+          <div class="badge mb8">LTL / Partial Load</div>
+          <div class="ph ph-h3 w100 mb8"></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w80 mb4"></div>
+          <div class="ph ph-p w65"></div>
+        </div>
+
+        <!-- Card 3: Express -->
+        <div class="svc-card">
+          <div class="icon-sq">
+            <svg width="20" height="20" viewBox="0 0 20 20"><polyline points="2,10 8,4 14,10 10,10 10,17" stroke="#5c6f8a" fill="none" stroke-width="1.5"/><line x1="14" y1="10" x2="18" y2="10" stroke="#5c6f8a" stroke-width="1.5"/></svg>
+          </div>
+          <div class="badge mb8">Express Delivery</div>
+          <div class="ph ph-h3 w100 mb8"></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w80 mb4"></div>
+          <div class="ph ph-p w65"></div>
+        </div>
+
+        <!-- Card 4: Dispatch -->
+        <div class="svc-card">
+          <div class="icon-sq">
+            <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" stroke="#5c6f8a" fill="none" stroke-width="1.5"/><polyline points="10,6 10,10 13,12" stroke="#5c6f8a" fill="none" stroke-width="1.5"/></svg>
+          </div>
+          <div class="badge mb8">24/7 Dispatch</div>
+          <div class="ph ph-h3 w100 mb8"></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w80 mb4"></div>
+          <div class="ph ph-p w65"></div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="svc-card">
+          <div class="icon-sq">
+            <svg width="20" height="20" viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="2" stroke="#5c6f8a" fill="none" stroke-width="1.5"/><line x1="7" y1="10" x2="13" y2="10" stroke="#5c6f8a" stroke-width="1.5"/><line x1="10" y1="7" x2="10" y2="13" stroke="#5c6f8a" stroke-width="1.5"/></svg>
+          </div>
+          <div class="badge mb8">Load Tracking</div>
+          <div class="ph ph-h3 w100 mb8"></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w80 mb4"></div>
+          <div class="ph ph-p w65"></div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="svc-card">
+          <div class="icon-sq">
+            <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="8" r="4" stroke="#5c6f8a" fill="none" stroke-width="1.5"/><path d="M3 18c0-4 3-7 7-7s7 3 7 7" stroke="#5c6f8a" fill="none" stroke-width="1.5"/></svg>
+          </div>
+          <div class="badge mb8">Driver Support</div>
+          <div class="ph ph-h3 w100 mb8"></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w80 mb4"></div>
+          <div class="ph ph-p w65"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="gap"></div>
+
+  <!-- ════════════════════════════════════════
+       04 · TRUST & COMPLIANCE
+  ════════════════════════════════════════ -->
+  <div class="wf">
+    <span class="slabel">04 · Trust &amp; Compliance — "Built on Trust. Backed by Miles."</span>
+    <div class="sec-pad row g32 aifs">
+
+      <!-- LEFT: title + CTA -->
+      <div class="col" style="max-width: 380px;">
+        <div class="badge mb12">Why Choose Us</div>
+        <div class="ph ph-h2 w100 mb8"></div>
+        <div class="ph ph-h2 w80 mb16"></div>
+        <div class="ph ph-p w100 mb4"></div>
+        <div class="ph ph-p w80 mb4"></div>
+        <div class="ph ph-p w65 mb20"></div>
+        <button class="btn btn-solid btn-sm">Learn More</button>
+
+        <!-- Image below text -->
+        <div class="img-ph mt20" style="height: 200px;">
+          <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+            <line x1="0" y1="0"   x2="400" y2="200" stroke="#b0bccf" stroke-width="1.5"/>
+            <line x1="400" y1="0" x2="0"   y2="200" stroke="#b0bccf" stroke-width="1.5"/>
+          </svg>
+          <div class="img-ph-label">Safety / Compliance<br>illustration</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: 4 trust items -->
+      <div class="col">
+        <div class="trust-list">
+
+          <div class="trust-row">
+            <div class="trust-dot">
+              <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" stroke="#5c6f8a" fill="none" stroke-width="1.5"/><polyline points="4,7 6,9 10,5" stroke="#5c6f8a" fill="none" stroke-width="1.5"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div class="ph ph-h3 w80 mb6"></div>
+              <div class="ph ph-p w100 mb4"></div>
+              <div class="ph ph-p w80"></div>
+            </div>
+            <div class="badge green">GPS Tracking</div>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-dot">
+              <svg width="14" height="14" viewBox="0 0 14 14"><path d="M7 2 L12 4 L12 8 C12 11 9 13 7 14 C5 13 2 11 2 8 L2 4 Z" stroke="#5c6f8a" fill="none" stroke-width="1.5"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div class="ph ph-h3 w80 mb6"></div>
+              <div class="ph ph-p w100 mb4"></div>
+              <div class="ph ph-p w80"></div>
+            </div>
+            <div class="badge green">DOT Certified</div>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-dot">
+              <svg width="14" height="14" viewBox="0 0 14 14"><rect x="2" y="5" width="10" height="7" rx="1" stroke="#5c6f8a" fill="none" stroke-width="1.5"/><path d="M5 5V3.5a2 2 0 014 0V5" stroke="#5c6f8a" fill="none" stroke-width="1.5"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div class="ph ph-h3 w80 mb6"></div>
+              <div class="ph ph-p w100 mb4"></div>
+              <div class="ph ph-p w80"></div>
+            </div>
+            <div class="badge">No Hidden Fees</div>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-dot">
+              <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" stroke="#5c6f8a" fill="none" stroke-width="1.5"/><polyline points="7,4 7,7 9,9" stroke="#5c6f8a" fill="none" stroke-width="1.5"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div class="ph ph-h3 w80 mb6"></div>
+              <div class="ph ph-p w100 mb4"></div>
+              <div class="ph ph-p w80"></div>
+            </div>
+            <div class="badge blue">On-Time Guarantee</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gap"></div>
+
+  <!-- ════════════════════════════════════════
+       05 · TESTIMONIALS
+  ════════════════════════════════════════ -->
+  <div class="wf wf-gray">
+    <span class="slabel">05 · Testimonials — "Trusted by Shippers and Operators"</span>
+    <div class="sec-pad">
+
+      <div class="tc mb24">
+        <div class="badge mb8">Client Reviews</div>
+        <div class="ph ph-h2 w50 mb8" style="margin:8px auto;"></div>
+        <div class="stars" style="justify-content:center;">
+          <div class="star"></div><div class="star"></div><div class="star"></div>
+          <div class="star"></div><div class="star"></div>
+        </div>
+      </div>
+
+      <div class="row g12">
+
+        <!-- Testimonial 1 -->
+        <div class="testi-card">
+          <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w80"></div>
+          <div class="row g8 aic mt8">
+            <div class="testi-avatar">JD</div>
+            <div>
+              <div class="ph ph-p w100" style="width:80px; height:9px;" class="mb4"></div>
+              <div class="ph ph-sm" style="width:64px; margin-top:4px;"></div>
+            </div>
+            <div class="badge" style="margin-left:auto;">Shipper</div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testi-card">
+          <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w80"></div>
+          <div class="row g8 aic mt8">
+            <div class="testi-avatar">MR</div>
+            <div>
+              <div class="ph ph-p" style="width:80px; height:9px; margin-bottom:4px;"></div>
+              <div class="ph ph-sm" style="width:64px;"></div>
+            </div>
+            <div class="badge" style="margin-left:auto;">Owner-Operator</div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testi-card">
+          <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w80"></div>
+          <div class="row g8 aic mt8">
+            <div class="testi-avatar">KL</div>
+            <div>
+              <div class="ph ph-p" style="width:80px; height:9px; margin-bottom:4px;"></div>
+              <div class="ph ph-sm" style="width:64px;"></div>
+            </div>
+            <div class="badge" style="margin-left:auto;">Shipper</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="gap"></div>
+
+  <!-- ════════════════════════════════════════
+       06 · FAQ
+  ════════════════════════════════════════ -->
+  <div class="wf">
+    <span class="slabel">06 · FAQ — "Common Questions" · Accordion · 6 items</span>
+    <div class="sec-pad row g32">
+
+      <!-- LEFT: title -->
+      <div style="width: 280px; flex-shrink: 0;">
+        <div class="badge mb12">FAQ</div>
+        <div class="ph ph-h2 w100 mb8"></div>
+        <div class="ph ph-h2 w80 mb16"></div>
+        <div class="ph ph-p w100 mb4"></div>
+        <div class="ph ph-p w80 mb4"></div>
+        <div class="ph ph-p w65 mb20"></div>
+        <button class="btn btn-outline btn-sm">Contact Support</button>
+      </div>
+
+      <!-- RIGHT: accordion -->
+      <div class="col">
+
+        <!-- item 1 — open -->
+        <div class="faq-row open">
+          <div class="ph ph-p" style="width: 70%; height: 11px;"></div>
+          <div class="chevron up">▲</div>
+        </div>
+        <div class="faq-expanded">
+          <div class="ph ph-p w100 mb4"></div>
+          <div class="ph ph-p w80 mb4"></div>
+          <div class="ph ph-p w65"></div>
+          <div class="badge blue mt8">Service Areas</div>
+        </div>
+
+        <!-- items 2–6 — closed -->
+        <div class="faq-row">
+          <div class="ph ph-p" style="width:60%; height:11px;"></div>
+          <div class="chevron">▼</div>
+        </div>
+        <div class="faq-row">
+          <div class="ph ph-p" style="width:75%; height:11px;"></div>
+          <div class="chevron">▼</div>
+        </div>
+        <div class="faq-row">
+          <div class="ph ph-p" style="width:55%; height:11px;"></div>
+          <div class="chevron">▼</div>
+        </div>
+        <div class="faq-row">
+          <div class="ph ph-p" style="width:80%; height:11px;"></div>
+          <div class="chevron">▼</div>
+        </div>
+        <div class="faq-row" style="margin-bottom:0;">
+          <div class="ph ph-p" style="width:65%; height:11px;"></div>
+          <div class="chevron">▼</div>
+        </div>
+
+        <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+          <div class="badge">Equipment Types</div>
+          <div class="badge">Service Areas</div>
+          <div class="badge">Driver Application</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="gap"></div>
+
+  <!-- ════════════════════════════════════════
+       07 · FINAL CTA
+  ════════════════════════════════════════ -->
+  <div class="wf wf-dark">
+    <span class="slabel slabel-dark">07 · Final CTA — "Ready to Move With Us?"</span>
+    <div class="sec-pad tc">
+
+      <div class="badge blue mb16" style="background:#1e3a8a; border-color:#3b5bdb; color:#93c5fd;">Call to Action</div>
+
+      <div class="ph ph-h1 w50 ph-dk mb8" style="margin:0 auto 8px;"></div>
+      <div class="ph ph-h2 w40 ph-dk mb8" style="margin:0 auto 8px; background:#253558;"></div>
+      <div class="ph ph-p w30 ph-dk mb24" style="margin:0 auto 24px; background:#253558;"></div>
+
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-dark" style="font-size:14px; padding:12px 36px;">Contact Us Today</button>
+        <button class="btn btn-ghost-dk" style="font-size:14px; padding:12px 36px;">Apply as a Driver</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gap"></div>
+
+  <!-- ════════════════════════════════════════
+       08 · FOOTER
+  ════════════════════════════════════════ -->
+  <div class="wf wf-dark">
+    <span class="slabel slabel-dark">08 · Footer — 4-column layout</span>
+    <div class="footer">
+
+      <div class="row g32">
+
+        <!-- Col 1: Logo + tagline -->
+        <div style="flex: 1.2;">
+          <div class="footer-logo">TRANSNATUR INC</div>
+          <div class="ph ph-p w100 ph-dk mb4" style="background:#2e4070;"></div>
+          <div class="ph ph-p w80 ph-dk mb4" style="background:#2e4070;"></div>
+          <div class="ph ph-p w60 ph-dk mb16" style="background:#2e4070;"></div>
+          <!-- Social icons -->
+          <div class="row g8">
+            <div class="social-icon"></div>
+            <div class="social-icon"></div>
+            <div class="social-icon"></div>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div class="footer-col col">
+          <div class="footer-col-title">Navigation</div>
+          <div class="footer-link" style="width:50px;"></div>
+          <div class="footer-link" style="width:44px;"></div>
+          <div class="footer-link" style="width:56px;"></div>
+          <div class="footer-link" style="width:38px;"></div>
+          <div class="footer-link" style="width:50px;"></div>
+        </div>
+
+        <!-- Col 3: Services -->
+        <div class="footer-col col">
+          <div class="footer-col-title">Services</div>
+          <div class="footer-link" style="width:28px;"></div>
+          <div class="footer-link" style="width:36px;"></div>
+          <div class="footer-link" style="width:52px;"></div>
+          <div class="footer-link" style="width:44px;"></div>
+        </div>
+
+        <!-- Col 4: Legal -->
+        <div class="footer-col col">
+          <div class="footer-col-title">Legal</div>
+          <div class="footer-link" style="width:60px;"></div>
+          <div class="footer-link" style="width:44px;"></div>
+          <div class="footer-link" style="width:68px;"></div>
+        </div>
+
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="row jcsb aic">
+        <div class="ph ph-sm" style="width: 200px; background: #2e4070;"></div>
+        <div class="ph ph-sm" style="width: 140px; background: #2e4070;"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Legend ── -->
+  <div style="margin-top: 24px; padding: 16px 20px; border: 1.5px dashed var(--border); border-radius: var(--r); background: var(--surface);">
+    <div style="font-size:10px; font-weight:700; color:var(--label); letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px;">Legend</div>
+    <div class="row g24 wrap-flex">
+      <div class="row g8 aic"><div style="width:32px; height:10px; background:var(--muted); border-radius:2px;"></div><span style="font-size:11px; color:var(--label);">Text placeholder</span></div>
+      <div class="row g8 aic"><div style="width:32px; height:20px; background:var(--muted2); border:1.5px solid var(--muted); border-radius:3px; position:relative; overflow:hidden;"><svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 32 20"><line x1="0" y1="0" x2="32" y2="20" stroke="#b0bccf" stroke-width="1"/><line x1="32" y1="0" x2="0" y2="20" stroke="#b0bccf" stroke-width="1"/></svg></div><span style="font-size:11px; color:var(--label);">Image / photo placeholder</span></div>
+      <div class="row g8 aic"><button class="btn btn-solid btn-sm" style="pointer-events:none;">Solid CTA</button><span style="font-size:11px; color:var(--label);">Primary button</span></div>
+      <div class="row g8 aic"><button class="btn btn-outline btn-sm" style="pointer-events:none;">Ghost CTA</button><span style="font-size:11px; color:var(--label);">Secondary button</span></div>
+      <div class="row g8 aic"><span class="badge blue">Annotation</span><span style="font-size:11px; color:var(--label);">Section badge / label</span></div>
+      <div class="row g8 aic"><div style="width:20px; height:20px; border:1.5px dashed var(--border); border-radius:3px;"></div><span style="font-size:11px; color:var(--label);">Dashed = wireframe boundary</span></div>
+    </div>
+  </div>
+
+  <div style="text-align:center; font-size:9px; color:#a0b0c8; margin-top:16px; letter-spacing:.08em;">
+    WIREFRAME v2 · TRANSNATUR INC · LOGISTICS LANDING PAGE · 8 SECTIONS + FOOTER · 1100px GRID
+  </div>
+
+</div><!-- /wrap -->
+</div><!-- /page -->
+
+</body>
+</html>
